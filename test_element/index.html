@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="import" href="asq/asq-elements.html">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="./asq/asq.js"></script> -->
+        <title>ASQ test</title>
+
+    </head>
+
+    <body>
+        <asq-exercise id="first">
+        
+        </asq-exercise>
+        
+        <template id="asq-exercise">
+            <h2>This is an ASQ exercise.</h2>
+            <content></content>
+            <div>
+                <button type="submit" >Submit</button>
+            </div>
+        </template>
+
+        <script>
+            var ASQExerciseProto = Object.create(HTMLElement.prototype, {
+                createdCallback: {
+                    value: function() {
+                        var template = document.querySelector('#asq-exercise');
+                        var clone = document.importNode(template.content, true);
+                        this.createShadowRoot().appendChild(clone);
+                    }
+                }
+            });
+            document.registerElement('asq-exercise', {prototype: ASQExerciseProto});
+
+
+        </script>
+
+        
+        <div id="asq-elements-block"></div>
+    </body>
+
+
+</html>
