@@ -3,18 +3,23 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="import" href="asq/asq-elements.html">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <link rel="import" href="asq/asq-elements.html"> -->
         <!-- <script src="./asq/asq.js"></script> -->
         <title>ASQ test</title>
 
     </head>
 
     <body>
-        <asq-exercise id="first">
-        
+        <asq-exercise id="first-exercise">
+            <asq-multi-choice id="a-multi-choice">
+                <asq-option>Option 1</asq-option>
+                <asq-option>Option 2</asq-option>
+                <asq-option>Option 3</asq-option>
+            </asq-multi-choice>
         </asq-exercise>
         
+        <!-- Exercise tag -->
         <template id="asq-exercise">
             <h2>This is an ASQ exercise.</h2>
             <content></content>
@@ -24,7 +29,7 @@
         </template>
 
         <script>
-            var ASQExerciseProto = Object.create(HTMLElement.prototype, {
+            var ASQExerciseProto = Object.create(HTMLFormElement.prototype, {
                 createdCallback: {
                     value: function() {
                         var template = document.querySelector('#asq-exercise');
@@ -34,11 +39,51 @@
                 }
             });
             document.registerElement('asq-exercise', {prototype: ASQExerciseProto});
-
-
         </script>
+        <!-- End of Exercise tag-->
 
-        
+        <!-- Option tag -->
+        <template id="asq-option">
+            <label class="checkbox">
+                <input type="checkbox"> 
+                <content></content>
+            </label>
+        </template>
+
+        <script>
+            var ASQOptionProto = Object.create(HTMLLIElement.prototype, {
+                createdCallback: {
+                    value: function() {
+                        var template = document.querySelector('#asq-option');
+                        var clone = document.importNode(template.content, true);
+                        this.createShadowRoot().appendChild(clone);
+                    }
+                }
+            });
+            document.registerElement('asq-option', {prototype: ASQOptionProto});
+        </script>
+        <!-- End of Option tag--> 
+
+        <!-- Multiplechoice tag -->
+        <template id="asq-multi-choice">
+            <content></content>
+        </template>
+
+        <script>
+            var ASQMultiChoiceProto = Object.create(HTMLElement.prototype, {
+                createdCallback: {
+                    value: function() {
+                        var template = document.querySelector('#asq-multi-choice');
+                        var clone = document.importNode(template.content, true);
+                        this.createShadowRoot().appendChild(clone);
+                    }
+                }
+            });
+            document.registerElement('asq-multi-choice', {prototype: ASQMultiChoiceProto});
+        </script>
+        <!-- End of Multiplechoice tag--> 
+
+        <!-- -->
         <div id="asq-elements-block"></div>
     </body>
 
