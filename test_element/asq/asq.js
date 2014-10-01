@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $("#asq-elements-block").load("./asq/asq-elements.html");  
+    // $("#asq-elements-block").load("./asq/asq-elements.html");  
 
-    console.log("hihi"); 
+    console.log("jquery is ready"); 
 
 });

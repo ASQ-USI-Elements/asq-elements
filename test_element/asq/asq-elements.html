@@ -1,13 +1,15 @@
+<!-- Exercise tag -->
 <template id="asq-exercise">
     <h2>This is an ASQ exercise.</h2>
     <content></content>
     <div>
+        <button type="button" >Modify</button>
         <button type="submit" >Submit</button>
     </div>
 </template>
 
 <script>
-    var ASQExerciseProto = Object.create(HTMLElement.prototype, {
+    var ExerciseProto = Object.create(HTMLFormElement.prototype, {
         createdCallback: {
             value: function() {
                 var template = document.querySelector('#asq-exercise');
@@ -16,7 +18,87 @@
             }
         }
     });
-    document.registerElement('asq-exercise', {prototype: ASQExerciseProto});
-
-
+    document.registerElement('asq-exercise', {prototype: ExerciseProto});
 </script>
+<!-- End of Exercise tag-->
+
+<!-- Option tag -->
+<template id="asq-option">
+    <label class="checkbox">
+        <input type="checkbox"> 
+        <content></content>
+    </label>
+</template>
+
+<script>
+    var OptionProto = Object.create(HTMLLIElement.prototype, {
+        createdCallback: {
+            value: function() {
+                var template = document.querySelector('#asq-option');
+                var clone = document.importNode(template.content, true);
+                this.createShadowRoot().appendChild(clone);
+            }
+        }
+    });
+    document.registerElement('asq-option', {prototype: OptionProto});
+</script>
+<!-- End of Option tag--> 
+
+<!-- Multiplechoice tag -->
+<template id="asq-multi-choice">
+    <content></content>
+</template>
+
+<script>
+    var MultiChoiceProto = Object.create(HTMLElement.prototype, {
+        createdCallback: {
+            value: function() {
+                var template = document.querySelector('#asq-multi-choice');
+                var clone = document.importNode(template.content, true);
+                this.createShadowRoot().appendChild(clone);
+            }
+        }
+    });
+    document.registerElement('asq-multi-choice', {prototype: MultiChoiceProto});
+</script>
+<!-- End of Multiplechoice tag--> 
+
+
+<!-- Stem tag -->
+<template id="asq-stem">
+    <content></content>
+</template>
+<script>
+    var StemProto = Object.create(HTMLElement.prototype, {
+        createdCallback: {
+            value: function() {
+                var template = document.querySelector('#asq-stem');
+                var clone = document.importNode(template.content, true);
+                this.createShadowRoot().appendChild(clone);
+            }
+        }
+    });
+    document.registerElement('asq-stem', {prototype: StemProto});
+</script>
+<!-- End of Stem tag -->
+
+<!-- Stem tag -->
+<template id="asq-text-input">
+    <content></content>
+    <label for="inputText">Your solution:</label>
+    <input type="text" class="" placeholder="...">
+</template>
+
+<script>
+    var TestInputProto = Object.create(HTMLElement.prototype, {
+        createdCallback: {
+            value: function() {
+                var template = document.querySelector('#asq-text-input');
+                var clone = document.importNode(template.content, true);
+                this.createShadowRoot().appendChild(clone);
+            }
+        }
+    });
+    document.registerElement('asq-text-input', {prototype: TestInputProto});
+</script>
+<!-- End of Multiplechoice tag-->

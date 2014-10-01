@@ -1,33 +1,3 @@
-<!doctype html>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- <link rel="import" href="asq/asq-elements.html">  -->
-        <!-- <script src="./asq/asq.js"></script> -->
-        <title>ASQ test</title>
-
-    </head>
-
-    <body>
-        <asq-exercise id="first-exercise">
-            <asq-stem><h3>Which are the official languages of Switzerland?</h3></asq-stem>
-            <asq-multi-choice id="a-multi-choice">
-                <asq-option>German</asq-option>
-                <asq-option>French</asq-option>
-                <asq-option>Italian</asq-option>
-                <asq-option>English</asq-option>
-                <asq-option>Rumantsch</asq-option>
-            </asq-multi-choice>
-            <br>
-            <asq-text-input id="a-text-input">
-                <asq-stem><h3>What's the result of 2 + 3</h3></asq-stem>
-            </asq-text-input>
-            <br>
-            <br>
-        </asq-exercise>
-        
         <!-- Exercise tag -->
         <template id="asq-exercise">
             <h2>This is an ASQ exercise.</h2>
@@ -132,10 +102,3 @@
             document.registerElement('asq-text-input', {prototype: TestInputProto});
         </script>
         <!-- End of Multiplechoice tag-->
-
-        <!-- -->
-        <div id="asq-elements-repository"></div>
-    </body>
-
-
-</html>
