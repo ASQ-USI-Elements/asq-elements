@@ -1,23 +1,48 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
-
-<polymer-element name="asq-exercise">
+<polymer-element name="asq-exercise" attributes="exercise_id">
   <template>
-    <style></style>
+    <style> 
+      .submit_button {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+      }
+      .edit_button {
+        background-color: rgb(255, 155, 15);
+      }
+
+      #exercises {
+        margin-left: 2em
+      }
+
+      #buttons {
+        text-align: right;
+      }
+
+    </style>
 
     <!-- EXERCISE CONTENTS GO HERE -->
     <div class="asq-exercise">
-      
-      <content select="h2"></content>
-      <content></content>
-      <button type="submit">Submit</button>
+      <h2><content select="asq-stem"></content></h2>
+      <div id="exercises" >
+        <content></content>
+      </div>
+      <div id="buttons">
+        <paper-button class="submit_button" label="Summit" id="{{ 'submit' +  exercise_id}}"></paper-button>
+        <paper-button class="edit_button" label="Edit" id="{{ 'Edit' +  exercise_id}}"></paper-button>
+      </div>
     </div>
 
   </template>
 
   <script>
     Polymer({
-      extends: "form"
+      extends: "form",
+      ready: function  () {
+        
+      } 
     });
   </script>
 </polymer-element>

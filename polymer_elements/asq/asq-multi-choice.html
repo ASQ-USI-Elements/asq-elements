@@ -3,13 +3,18 @@
 
 <polymer-element name="asq-multi-choice">
   <template>
-    <style></style>
+    <style>
+      #choices {
+        margin-left: 2em
+      }
+    </style>
 
-    <!-- EXERCISE CONTENTS GO HERE -->
     <div class="asq-multi-choice">
-      <content select="h3"></content>
+      <h3><content select="asq-stem"></content></h3>
     </div>
-    <content></content>
+    <div id="choices">
+      <content></content>
+    </div>
   </template>
 
   <script>
