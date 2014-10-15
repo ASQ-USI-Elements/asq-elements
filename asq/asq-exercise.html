@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
-<polymer-element name="asq-exercise" attributes="exercise_id">
+<polymer-element name="asq-exercise" attributes="exercise-id">
   <template>
     <style> 
       .submit_button {
@@ -25,13 +25,15 @@
 
     <!-- EXERCISE CONTENTS GO HERE -->
     <div class="asq-exercise">
+      
       <h2><content select="asq-stem"></content></h2>
       <div id="exercises" >
         <content></content>
+        <!-- <h1>{{ exercise_id }}</h1> -->
       </div>
       <div id="buttons">
-        <paper-button class="submit_button" label="Summit" id="{{ 'submit' +  exercise_id}}"></paper-button>
-        <paper-button class="edit_button" label="Edit" id="{{ 'Edit' +  exercise_id}}"></paper-button>
+        <paper-button class="submit_button" id='submitbutton{{exercise_id}}'>Submit</paper-button>
+        <paper-button class="edit_button"  id="editbutton{{exercise_id}}">Edit</paper-button>
       </div>
     </div>
 

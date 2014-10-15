@@ -1,24 +1,35 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 
-<polymer-element name="asq-css-select">
+<polymer-element name="asq-css-select" attributes="data-asq-code">
   <template>
     <style>
-      #choices {
-        margin-left: 2em
+      #scode {
+        width:600px;
+        height: 400px;
+        background: #272822;
+        color: #FCFCFC;
       }
     </style>
 
-    <div class="aasq-css-select">
+    <div class="asq-select-css">
       <h3><content select="asq-stem"></content></h3>
-      <p class="js-code"><content select="asq-stem"></content></p>
+      <div id="scode" data-asq-code="{{ data-asq-code }}">
+        <pre><code></code></pre> 
+      </div> 
+      <div>
+        Selector: <input type="text" id="sel-input">
+      </div> 
     </div>
-    <div id="pl">
-      <content></content>
-    </div>
+       
   </template>
 
   <script>
-    Polymer({});
+    Polymer('asq-css-select', {
+      ready: function  () {
+        console.log("ppppp"); 
+      }
+    });
   </script>
+  <!-- // <script src="./asq-css-select.js"></script> -->
 </polymer-element>
