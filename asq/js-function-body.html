@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<polymer-element name="asq-js-function-body">
+  <template>
+    <style>
+      #choices {
+        margin-left: 2em
+      }
+    </style>
+
+    <div class="asq-js-function-body">
+      <h3><content select="asq-stem"></content></h3>
+      <p class="js-code"><content select="asq-stem"></content></p>
+
+    </div>
+    <div id="choices">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>
