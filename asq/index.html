@@ -5,7 +5,7 @@
 
   <title>polymer asq</title>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <script src="../bower_components/platform/platform.js"></script>
   <link rel="stylesheet" href="./main.css" type="text/css" />
@@ -22,6 +22,7 @@
   <link  rel="import" href="asq-stem.html">
   <link  rel="import" href="asq-text-input.html">
   <link  rel="import" href="asq-code.html">
+  <link  rel="import" href="asq-test.html">
 
 </head>
 
@@ -34,16 +35,15 @@
     </core-toolbar>
     <section id="section">
       <section id="section1" center horizontal layout>
-        <asq-exercise exercise-id="hello" center layout>
+        <asq-exercise exerciseid="hello" center layout>
           <asq-stem>Exercise 1</asq-stem>
-          <asq-css-select data-asq-code="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
-          <asq-stem>Please use css to select.</asq-stem>
-          </asq-css-select>
+          <asq-test></asq-test>
         </asq-exercise>
+        <div id="mx"></div>
       </section>
     </section>
   </core-header-panel>
-
+  
   <script></script>
 </body>
 
