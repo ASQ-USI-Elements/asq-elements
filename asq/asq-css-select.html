@@ -1,148 +1,30 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-
 <polymer-element name="asq-css-select" attributes="datahtmlcode">
   <template>
     <style>
-      #scode {
+      #code {
         width:600px;
         height: 400px;
         background: #272822;
         color: #FCFCFC;
       }
+      #input {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
     </style>
     <!-- -->
     <div class="asq-select-css">
       <h3><content select="asq-stem"></content></h3>
-      <div id="scode">
-        <pre id="pres"><code id="codePane"></code></pre> 
+      <div id="code">
+        <pre><code id="codePane"></code></pre> 
       </div> 
-      <div>
-        Selector: <input type="text" id="sel-input">
+      <div id="input">
+        <label>Selector: </label><input type="text" id="sel_input">
       </div> 
     </div>
   </template>
-
-  <!-- // <script src="./asq-css-select.js"></script> -->
-  
-  <script>
-    Polymer('asq-css-select', {
-      domReady: function() {
-        console.log("css select domReady");
-
-        var attr = this.attributes[0];
-        if ( attr.nodeName === "datahtmlcode" ) {
-          var newHtml = attr.value;
-          
-          // var pane = this.$.codePane;
-          
-          // var vDom = document.createElement("div");
-          // var $vDOM = $('<div>' + newHtml + '</div>');
-          // var codeTree = createTree($vDOM, "", "");
-
-          // // var $vDOM = $('<div>' + newHtml + '</div>');
-          
-          // this.$.codePane.innerHtml = "<span>&lt;li class=&quot;daclass&quot;&gt;</span>";
-          // console.log(pane.innerHtml);
-
-          initializeCssSelect(newHtml);
-        }
-      } 
-    });
- 
-  
-    function initializeCssSelect(newHtml) {
-        var $codePane = $("#codePane");
-        // var newHtml = $("#scode").attr('dataasqcode');
-        // console.log($("#scode"));
-
-        var $vDOM = $('<div>' + newHtml + '</div>');
-        var codeTree = createTree($vDOM, "", "");
-        $codePane.html(codeTree);
-
-        console.log($codePane);
-
-        
-        // magic happens here
-        var $selInput = $('#sel-input');
-        $selInput.on('input', function(){
-            var value = $selInput.val();
-            var $clone = $vDOM.clone();
-            var selected = $clone.find(value).each(function(){
-                $(this).attr('data-asq-selected', "true");
-            });
-            codeTree = createTree($clone, "", "");
-            $codePane.html(codeTree);
-        });
-
-    }
-
-
-// recursive function that creates the escaped tree of the html
-// annotated with spans
-    function createTree($el, treeStr, tabwidth){
-        // console.log("_____________createTree");
-        var nextTabwidth = tabwidth || "";
-        $el.children().each(function(){
-            var $this = $(this);
-            var spanOpenTag = "<span>";
-
-            if($this.attr('data-asq-selected') === "true"){
-                spanOpenTag = '<span style="background-color:#fd2343;">';
-            }
-
-            treeStr += tabwidth + spanOpenTag;
-            treeStr += escapeHtml(getElOpeningTag(this));
-            treeStr += '</span>'+ '\n';
-
-
-            //generate tree for children of current
-            nextTabwidth = tabwidth + "  ";
-            treeStr = createTree($this, treeStr, nextTabwidth);
-
-            //back to current 
-            treeStr += tabwidth + spanOpenTag;
-            treeStr +=  escapeHtml("</" + $this.prop("tagName").toLowerCase() + ">");
-            treeStr += '</span>'+ '\n';
-        });
-            
-        return treeStr;
-    }
-
-
-    var entityMap = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': '&quot;',
-        "'": '&#39;',
-        "/": '&#x2F;'
-    };
-
-    function escapeHtml(string) {
-        return String(string).replace(/[&<>"'\/]/g, function (s) {
-          return entityMap[s];
-        });
-    }
-
-    function getElOpeningTag(el){
-        // console.log("_____________getElOpeningTag");
-        var str ="<";
-        str += $(el).prop("tagName").toLowerCase();
-        
-        //get all attribures
-        $.each(el.attributes, function() {
-        // this.attributes is not a plain object, but an array
-        // of attribute nodes, which contain both the name and value
-            if(this.specified && this.name !=='data-asq-selected' ) {
-              str += ' ' + this.name;
-              str += '="' + this.value + '"';
-            }
-        });
-        str+=">"
-        return str;
-    }
-
-  </script>
+  <script src="./asq-css-select.js"></script>
   
 </polymer-element>
