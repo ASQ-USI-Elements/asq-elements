@@ -1,29 +1,31 @@
 Polymer('asq-js-function-body', {
     domReady: function() {
-
+        var $header = this.$.header;
+        var $footer = this.$.footer;
+        var $testCommand = this.$.evaluate;
         var $codeInput = this.$.code;
+        var $asqResult = this.$.result;
+        var $resultWrapper = this.$.wrapper;
+        var solution= '"<div>hello World</div>"'; 
 
-        // Question: why the code right below doesn't work?
-        // var header = document.querySelector(".asq-code-header");
-
-        var header = $(".asq-code-header");
-        console.log($(".asq-code-header"), header.text());
-
-
-        // var header = $('.asq-code-header').text();
-        // var footer = $('.asq-code-footer').text();
-        // var testCommand = $('.asq-evaluate').text();
-        // var $codeInput = $('.asq-code-input');
-        // var $asqResult = $('.asq-result');
-        // var solution= '"<div>hello World</div>"'; 
-
-        // initJsFunctionBody(header, footer, testCommand, $codeInput, $asqResult, solution);
+        initJsFunctionBody($header.innerHTML, $footer.innerHTML, $testCommand.innerHTML, 
+            $codeInput, $asqResult, $resultWrapper, solution);
     } 
 });
 
-function initJsFunctionBody(theHeader, theFooter, theTestCommand, theCodeInput, theAsqResult, theResultWrapper, theSolution) {
+function initJsFunctionBody(theHeader, theFooter, theTestCommand, 
+    theCodeInput, theAsqResult, theResultWrapper, theSolution) {
+
     var interval = 150;
     var timer;
+
+    var header = theHeader;
+    var footer = theFooter;
+    var testCommand = theTestCommand;
+    var $codeInput = $(theCodeInput);
+    var $asqResult = $(theAsqResult);
+    var $resultWrapper = $(theResultWrapper);
+    var solution= theSolution;
     
     function getSubmittedCode(){
         var submission = header;
@@ -49,9 +51,9 @@ function initJsFunctionBody(theHeader, theFooter, theTestCommand, theCodeInput, 
         var result = evalInput(submission);
         $asqResult.text(result);
         if(result === solution){
-            $('.asq-result-wrapper').addClass('asq-correct');
+            $resultWrapper.addClass('asq-correct');
         }else{
-            $('.asq-result-wrapper').removeClass('asq-correct');
+            $resultWrapper.removeClass('asq-correct');
         }        
     }
     

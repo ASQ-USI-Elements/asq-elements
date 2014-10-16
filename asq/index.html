@@ -45,10 +45,11 @@
           </asq-css-select> -->
 
           <br>
-          <asq-js-function-body>
+          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
+            evaluate="wrap('hello World', 'div');">
             <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
-            <b class="fun-name">function wrap(str, tagName){</b>
-            <b class="fun-end">}//function ends here</b>
+          <!--   <b class="fun-name">function wrap(str, tagName){</b>
+            <b class="fun-end">}//function ends here</b> -->
           </asq-js-function-body>
 
         </asq-exercise>
