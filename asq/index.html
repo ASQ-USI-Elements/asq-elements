@@ -7,6 +7,7 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
   <script src="../bower_components/platform/platform.js"></script>
   <link rel="stylesheet" href="./main.css" type="text/css" />
 
@@ -23,6 +24,7 @@
   <link  rel="import" href="asq-text-input.html">
   <link  rel="import" href="asq-code.html">
   <link  rel="import" href="asq-css-select.html">
+  <link  rel="import" href="asq-js-function-body.html">
 
 </head>
 
@@ -38,12 +40,20 @@
         <asq-exercise exerciseid="hello" center layout>
           <asq-stem>Exercise 1</asq-stem>
 
-          <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
+         <!--  <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
             <asq-stem>Please use css selectors to select all 'div' elements.</asq-stem>
-          </asq-css-select>
+          </asq-css-select> -->
+
+          <br>
+          <asq-js-function-body>
+            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
+            <b class="fun-name">function wrap(str, tagName){</b>
+            <b class="fun-end">}//function ends here</b>
+          </asq-js-function-body>
 
         </asq-exercise>
 
+        <p class="xxx-y" foo="hoho">xxx</p>
       </section>
     </section>
   </core-header-panel>
