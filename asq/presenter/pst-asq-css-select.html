@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="pst-asq-css-select" attributes="datahtmlcode">
+  <template>
+    <style>
+      #code {
+        width:600px;
+        height: 400px;
+        background: #272822;
+        color: #FCFCFC;
+      }
+      #input {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+    </style>
+    <!-- -->
+    <div class="pst-asq-select-css">
+      <h3><content select="asq-stem"></content></h3>
+      <div id="code">
+        <pre><code id="codePane"></code></pre> 
+      </div> 
+      <div id="input">
+        <label>Selector: </label><input type="text" id="sel_input">
+      </div> 
+    </div>
+  </template>
+  <script src="./pst-asq-css-select.js"></script>
+  
+</polymer-element>

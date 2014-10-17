@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<polymer-element name="pst-asq-progress" attributes="value">
+  <template>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+  	
+    <style>
+    	.progress {
+    		margin-bottom: 0.25em;
+    	}
+    </style>
+
+  	<!-- The progress status should be computed instead of directly using -->
+    <div class="pst-asq-progress progress">
+  		<div class="progress-bar" role="progressbar" aria-valuenow="{{ value }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ value }}%;"></div>
+	</div>
+
+  </template>
+
+  <script>
+  	 Polymer({
+      ready: function  () {
+      	if ( this.value === undefined ) {
+      		this.value = 0;
+      	}
+      },
+
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,39 @@
+
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/ace-element/ace-element.html">
+
+
+<polymer-element name="pst-asq-code" attributes="codemode">
+  <template>
+    <style>
+      .ace_code {
+        margin-bottom: 0.5em;
+        margin-left: 2em
+      }
+
+      #ace_element {
+        width: 400px;
+        height: 300px;
+        position: relative;
+      }
+
+    </style>
+
+    <div class="asq-code" >
+      <h3><content select=".title"></content><h3>
+        <div class="ace_code">
+          <p><content select="asq-stem"></content><p>
+          <ace-element mode={{codemode}} value="" id="ace_element">function test() { var x = true; }</ace-element>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      ready: function  () {
+        
+      }
+    });
+  </script>
+</polymer-element>

@@ -2,7 +2,7 @@
   "name": "asq-elements",
   "version": "0.0.0",
   "description": "Customized tags for ASQ.",
-  "author": "Zhenfei Nie <zhen.fei.nie@usi.ch>", 
+  "author": "Zhenfei Nie <zhen.fei.nie@usi.ch>, Vassilis Triglianos <triglian@gmail.com>",
   "homepage": "https://github.com/ASQ-USI/asq-elements",
   
   "main": "index.js",
