@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>Demo</title>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="../bower_components/platform/platform.js"></script>
+  <link rel="stylesheet" href="./demo.css" type="text/css" />
+
+  <link rel="import" href="../bower_components/font-roboto/roboto.html">
+  <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="../bower_components/core-icon/core-icon.html">
+  
+  <link  rel="import" href="asq-option.html">
+  <link  rel="import" href="asq-multi-choice.html">
+  <link  rel="import" href="asq-exercise.html">
+  <link  rel="import" href="asq-stem.html">
+  <link  rel="import" href="asq-text-input.html">
+  <link  rel="import" href="asq-code.html">
+  <link  rel="import" href="asq-css-select.html">
+  <link  rel="import" href="asq-js-function-body.html">
+
+</head>
+
+<body unresolved>
+  <section id="section1" center layout>
+    <asq-exercise exerciseid="ex1" class="exercise">
+      <asq-stem><h2>Exercise 1</h2></asq-stem>
+      <asq-multi-choice>
+        <asq-stem><h3>Which are the official languages of Switzerland?</h3></asq-stem>
+        <asq-option>English</asq-option>
+        <asq-option correct="true">French</asq-option>
+        <asq-option correct="true">German</asq-option>
+        <asq-option correct="true">Rumantsch</asq-option>
+      </asq-multi-choice>
+    </asq-exercise>
+
+    <asq-exercise exerciseid="ex2" class="exercise">
+      <asq-stem><h2>Exercise 2</h2></asq-stem>
+      <asq-text-input correct-answer="6"><h3>What's the result of '2 * 3'</h3></asq-text-input>
+    </asq-exercise>
+
+    <asq-exercise exerciseid="ex3" class="exercise">
+      <asq-stem><h2>Exercise 3</h2></asq-stem>
+      <asq-css-select correct-answer="div" datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
+            <asq-stem><h3>Please use css selectors to select all 'div' elements.</h3></asq-stem>
+      </asq-css-select>
+    </asq-exercise>
+  </section>
+
+  
+  <script></script>
+</body>
+
+</html>

@@ -1,19 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-input/core-input.html">
-
 
 <polymer-element name="asq-text-input">
   <template>
     <style>
      .asq-text-input {
-      margin-bottom: 0.5em;
-      margin-bottom: 0.5em;
+/*      margin-bottom: 0.5em;
+      margin-bottom: 0.5em;*/
      }
     </style>
 
     <div class="asq-text-input">
-      <label><h3><content></content></h3></label>
-      <core-input  placeholder="answer here"></core-input>
+      <label for="input"><content></content></label>
+      <input type="text" name="input" placeholder="answer here">
     </div>
   </template>
 

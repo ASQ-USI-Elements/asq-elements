@@ -2,18 +2,23 @@
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 
 
-<polymer-element name="asq-option" attributes="labelname">
+<polymer-element name="asq-option">
   <template>
     <style>
-      .asq-option {
+   /*   .asq-option {
         margin-bottom: 0.5em;
         margin-left: 2em
-      }
-
+      }*/
     </style>
 
     <div class="asq-option" >
-      <paper-checkbox label="{{ labelname }}" ></paper-checkbox> 
+      <template if="role=='viewer'">
+        <input type="checkbox" name="option">
+        <label for="option"><content></content></label>  
+      </template>
+      <template if="role=='presenter'">
+        <content></content>
+      </template>    
     </div>
   </template>
 

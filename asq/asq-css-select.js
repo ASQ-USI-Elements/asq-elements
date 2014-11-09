@@ -1,6 +1,5 @@
 Polymer('asq-css-select', {
     domReady: function() {
-        console.log("css select domReady");
 
         var attr = this.attributes[0];
         if ( attr.nodeName === "datahtmlcode" ) {
