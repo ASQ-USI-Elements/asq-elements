@@ -5,10 +5,6 @@
 <polymer-element name="asq-option">
   <template>
     <style>
-   /*   .asq-option {
-        margin-bottom: 0.5em;
-        margin-left: 2em
-      }*/
     </style>
 
     <div class="asq-option" >
@@ -29,8 +25,15 @@
   <script>
     Polymer({
       role: 'viewer',
-      domReady: function  () {
-        
+      correct: undefined,
+
+      created: function  () {
+        if ( this.attributes.hasOwnProperty("correct") ) {
+          this.correct = this.attributes["correct"];
+          this.removeAttribute("correct");
+        } else {
+          this.correct = false;
+        }
       },
 
       setRole: function ( role ) {
