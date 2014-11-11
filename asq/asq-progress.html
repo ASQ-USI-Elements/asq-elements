@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="asq-progress" attributes="">
+  <template>
+    <style></style>
+    
+    <div>
+      <progress value="{{value}}" max="{{max}}"></progress>
+      <p>{{value}} / {{max}}</p>    
+    </div>
+
+  </template>
+
+  <script>
+    Polymer('asq-progress', {
+      value: 0,
+      max: 0,
+
+      ready: function () {
+        this.value = 3;
+        this.max = 10;
+      }
+    });
+  </script>
+</polymer-element>

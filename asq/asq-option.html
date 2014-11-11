@@ -12,20 +12,29 @@
     </style>
 
     <div class="asq-option" >
-      <template if="role=='viewer'">
-        <input type="checkbox" name="option">
-        <label for="option"><content></content></label>  
+      <template if="{{ role == 'viewer' }}">
+        <li>
+          <input type="checkbox" name="option">
+          <label for="option"><content></content></label>  
+        </li>
       </template>
-      <template if="role=='presenter'">
-        <content></content>
+      <template if="{{ role == 'presenter' }}">
+        <li>
+          <content></content>
+        </li>
       </template>    
     </div>
   </template>
 
   <script>
     Polymer({
-      ready: function  () {
+      role: 'viewer',
+      domReady: function  () {
         
+      },
+
+      setRole: function ( role ) {
+        this.role = role;
       }
     });
   </script>

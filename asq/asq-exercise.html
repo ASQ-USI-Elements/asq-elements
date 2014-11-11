@@ -1,4 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="./asq-progress.html">
+<link rel="import" href="./asq-confidence.html">
 
 <polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
@@ -12,35 +14,54 @@
         background-color: rgb(255, 155, 15);
       }
 
-      #exercises {
-        margin-left: 2em
+      div {
+        margin-left: 2em;
+        margin-right: 2em;
       }
 
       #buttons {
         text-align: right;
       }
 
+     /* asq-progress {
+        display: inline-block;
+        
+      }*/
+
     </style>
 
-    <div class="asq-exercise">
-      <content select="asq-stem"></content>
+    <article id="ex" class="asq-exercise">
+      <div>
+        <content select="asq-stem"></content>
+      </div>
       <div id="exercises" >
         <content></content>
       </div>
       <div id="buttons">
-        <button class="submit_button" id='submitbutton{{exerciseid}}'>Submit</button>
-        <button class="edit_button"  id="editbutton{{exerciseid}}">Edit</button>
+        <template if="{{role=='viewer'}}">
+          <asq-confidence></asq-confidence>
+          <button class="submit_button" id='submitbutton{{exerciseid}}'>Submit</button>
+          <button class="edit_button"  id="editbutton{{exerciseid}}">Edit</button>    
+        </template>
+        <template if="{{role=='presenter'}}">
+          <asq-progress></asq-progress>
+          <button class="submit_button">Stats</button>
+          <content></content>
+        </template> 
       </div>
-    </div>
+    </article>
 
   </template>
 
   <script>
     Polymer({
       extends: "form",
-      ready: function  () {
+      role: "viewer",  
 
-      } 
+      ready: function  () {
+        
+      }
+
     });
   </script>
 </polymer-element>
