@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="./asq-option.html">
 
 
 <polymer-element name="asq-multi-choice">
@@ -22,8 +23,21 @@
 
   <script>
     Polymer({
+      role: undefined,
+
+      setRole: function(role) {
+        this.role = role;
+
+        var options = this.querySelectorAll("asq-option").array();
+        options.forEach(function(option, index, array) {
+          option.setRole(this.role);
+        });
+      }, 
       ready: function () {
-        // console.log(this.childNodes);
+
+      },
+      toString: function() {
+        return "asq-multi-choice";
       }
     });
   </script>

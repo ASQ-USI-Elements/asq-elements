@@ -1,6 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="./asq-progress.html">
 <link rel="import" href="./asq-confidence.html">
+<link  rel="import" href="asq-multi-choice.html">
+<link  rel="import" href="asq-stem.html">
+<link  rel="import" href="asq-text-input.html">
+<link  rel="import" href="asq-code.html">
+<link  rel="import" href="asq-css-select.html">
+<link  rel="import" href="asq-js-function-body.html">
 
 <polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
@@ -52,10 +58,22 @@
   <script>
     Polymer({
       extends: "form",
-      role: "viewer",  
+      role: undefined, 
+
+
+      setRole: function(role) {
+        this.role = role;
+        var ALL_QUESTION_TYPES = ["asq-multi-choice", "asq-text-input"]
+        var nodes = this.childNodes.array();
+        nodes.forEach(function(elem, index, array) {
+          if ( ALL_QUESTION_TYPES.indexOf(elem.toString()) != -1 ) {
+            elem.setRole(this.role);
+          }
+        });
+      }, 
 
       ready: function  () {
-        
+        this.setRole("viewer");
       }
 
     });

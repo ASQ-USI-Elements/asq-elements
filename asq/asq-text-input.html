@@ -20,6 +20,13 @@
           this.correctAnswer = this.attributes["correct-answer"];
           this.removeAttribute("correct-answer");
         } 
+      },
+      toString: function() {
+        return "asq-text-input";
+      },
+      
+      setRole: function ( role ) {
+        this.role = role;
       }
 
     
