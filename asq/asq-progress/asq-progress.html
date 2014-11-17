@@ -1,9 +1,11 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-basic-element/asq-basic-element.html">
 
 <polymer-element name="asq-progress" attributes="" extends="asq-basic-element">
   <template>
     <style></style>
     
+    <!-- (for now) Keep same when either viewer or presenter -->
     <div>
       <progress value="{{value}}" max="{{max}}"></progress>
       <i>{{value}} / {{max}}</i>    

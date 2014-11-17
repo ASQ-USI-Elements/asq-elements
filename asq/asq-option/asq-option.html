@@ -1,30 +1,33 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="asq-basic-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-basic-element/asq-basic-element.html">
 
 <polymer-element name="asq-option" extends="asq-basic-element">
   <template>
     <style>
     </style>
 
-    <div class="asq-option" >
-      <template if="{{role=='viewer'}}">
+    <!-- template for viewer -->
+    <template if="{{role=='viewer'}}">
+      <div class="asq-option">
         <li>
           <input type="checkbox" name="option">
           <label for="option"><content></content></label>  
         </li>
-      </template>
-      <template if="{{role=='presenter'}}">
-        <li>
-          <content></content>
-        </li>
-      </template>    
-    </div>
-  </template>
+      </div>
+    </template>
 
+    <!-- template for presenter -->
+    <template  if="{{role=='presenter'}}">
+      <div class="asq-option">
+        <li>
+          <content></content> 
+        </li>
+      </div>
+    </template>    
+
+  </template>
   <script>
     Polymer({
-      role: 'presenter',
       correct: undefined,
 
       created: function  () {
@@ -34,15 +37,13 @@
         } else {
           this.correct = false;
         }
+
       },
 
-      // setRole: function ( role ) {
-      //   this.role = role;
-      // },
+      domReady: function() {
 
-      getRole: function () {
-        return this.role;
       }
+      
     });
   </script>
 </polymer-element>
