@@ -3,13 +3,12 @@
 
 <head>
 
-  <title>polymer asq</title>
+  <title>ASQ Element</title>
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
   <script src="../bower_components/platform/platform.js"></script>
-  <link rel="stylesheet" href="./main.css" type="text/css" />
+  <link rel="stylesheet" href="./index.css" type="text/css" />
 
   <link rel="import" href="../bower_components/font-roboto/roboto.html">
   <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
@@ -17,55 +16,55 @@
   <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
   <link rel="import" href="../bower_components/core-icon/core-icon.html">
   
-  <link  rel="import" href="asq-option.html">
-  <link  rel="import" href="asq-multi-choice.html">
-  <link  rel="import" href="asq-exercise.html">
-  <link  rel="import" href="asq-stem.html">
-  <link  rel="import" href="asq-text-input.html">
-  <link  rel="import" href="asq-code.html">
-  <link  rel="import" href="asq-css-select.html">
-  <link  rel="import" href="asq-js-function-body.html">
-
+  <link rel="import" href="asq-exercise.html">
 </head>
 
-<body unresolved>
-  <core-header-panel mode="standard" id="core_header_panel">
-    <core-toolbar id="core_toolbar">
-      <core-icon id="core_icon" src="../img/asq-logo.png"></core-icon>
-      <div id="div">ASQ</div>
-      <div id="hop"><a href="./presenter/">to presenter</a></div>
-    </core-toolbar>
-    <section id="section">
-      <section id="section1" center horizontal layout>
-        <asq-exercise exerciseid="hello" center layout>
-          <asq-stem><h2>Exercise 1</h2></asq-stem>
+<body asq-role="viewer" unresolved>
+  <section id="section1" center layout>
+    <asq-exercise exerciseid="ex1" class="exercise">
+      <asq-stem><h2>Exercise 1</h2></asq-stem>
+      <asq-multi-choice>
+        <asq-stem><h3>Which are the official languages of Switzerland?</h3></asq-stem>
+        <asq-option>English</asq-option>
+        <asq-option correct="true">French</asq-option>
+        <asq-option correct="true">German</asq-option>
+        <asq-option correct="true">Rumantsch</asq-option>
+      </asq-multi-choice>
+    </asq-exercise>
 
-          <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
-            <asq-stem><h3>Please use css selectors to select all 'div' elements.</h3></asq-stem>
-          </asq-css-select>
+    <asq-exercise exerciseid="ex2" class="exercise">
+      <asq-stem><h2>Exercise 2</h2></asq-stem>
+      <asq-text-input correct-answer="6"><h3>What's the result of '2 * 3'</h3></asq-text-input>
+    </asq-exercise>
 
-          <br>
-          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
-            evaluate="wrap('hello World', 'div');">
-            <asq-stem class="fun-question"><b>Implement a function that wraps a given string with an HTML tag:</b></asq-stem>
-          </asq-js-function-body>
+    <asq-exercise exerciseid="ex3" class="exercise">
+      <asq-stem><h2>Exercise 3</h2></asq-stem>
+      <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
+        <asq-stem><h3>Please use css selectors to select all 'div' elements.</h3></asq-stem>
+      </asq-css-select>
+    </asq-exercise>
+  </section>
 
-          <asq-multi-choice>
-            <asq-stem><h3>Which are the official languages of Switzerland?</h3></asq-stem>
-            <asq-option>English</asq-option>
-            <asq-option>French</asq-option>
-            <asq-option>German</asq-option>
-            <asq-option>Rumantsch</asq-option>
-          </asq-multi-choice>
-
-          <asq-text-input><h3>What's the result of '23'</h3></asq-text-input>
-
-        </asq-exercise>
-      </section>
-    </section>
-  </core-header-panel>
   
-  <script></script>
+  <script>
+  (function() {
+    function isASQEl(el) {
+      return el.localName.indexOf('asq-') != -1;
+    }
+    
+    var allAsqElements = document.querySelectorAll('html /deep/ *');
+    allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
+      return isASQEl(el);
+    });
+
+    //
+    var role = document.querySelector("body").getAttribute("asq-role");
+    allAsqElements.forEach(function(elem, index) {
+      elem.role = role;
+    });
+    console.log(allAsqElements);
+  })();
+  </script>
 </body>
 
 </html>

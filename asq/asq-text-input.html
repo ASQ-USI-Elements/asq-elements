@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="asq-basic-element.html">
 
-<polymer-element name="asq-text-input">
+<polymer-element name="asq-text-input" extends="asq-basic-element">
   <template>
     <style>
     </style>
@@ -23,11 +24,11 @@
       },
       toString: function() {
         return "asq-text-input";
-      },
-      
-      setRole: function ( role ) {
-        this.role = role;
       }
+      
+      // setRole: function ( role ) {
+      //   this.role = role;
+      // }
 
     
     });

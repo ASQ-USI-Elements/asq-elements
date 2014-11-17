@@ -1,13 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="./asq-option.html">
+<link rel="import" href="asq-basic-element.html">
 
-
-<polymer-element name="asq-multi-choice">
+<polymer-element name="asq-multi-choice" extends="asq-basic-element">
   <template>
     <style>
- /*     #choices {
-        margin-left: 2em
-      }*/
     </style>
 
     <div class="asq-multi-choice">
@@ -25,14 +22,15 @@
     Polymer({
       role: undefined,
 
-      setRole: function(role) {
-        this.role = role;
-
-        var options = this.querySelectorAll("asq-option").array();
-        options.forEach(function(option, index, array) {
-          option.setRole(this.role);
-        });
-      }, 
+      // setRole: function(role) {
+      //   this.role = role;
+        
+      //   var options = this.querySelectorAll("asq-option").array();
+        
+      //   options.forEach(function(option, index, array) {
+      //     option.setRole(role);
+      //   });
+      // }, 
       ready: function () {
 
       },

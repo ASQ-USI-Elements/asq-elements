@@ -7,8 +7,9 @@
 <link  rel="import" href="asq-code.html">
 <link  rel="import" href="asq-css-select.html">
 <link  rel="import" href="asq-js-function-body.html">
+<link  rel="import" href="asq-basic-element.html">
 
-<polymer-element name="asq-exercise" attributes="exerciseid">
+<polymer-element name="asq-exercise" attributes="exerciseid" extends="asq-basic-element">
   <template>
     <style> 
       .submit_button {
@@ -58,23 +59,6 @@
   <script>
     Polymer({
       extends: "form",
-      role: undefined, 
-
-
-      setRole: function(role) {
-        this.role = role;
-        var ALL_QUESTION_TYPES = ["asq-multi-choice", "asq-text-input"]
-        var nodes = this.childNodes.array();
-        nodes.forEach(function(elem, index, array) {
-          if ( ALL_QUESTION_TYPES.indexOf(elem.toString()) != -1 ) {
-            elem.setRole(this.role);
-          }
-        });
-      }, 
-
-      ready: function  () {
-        this.setRole("viewer");
-      }
 
     });
   </script>
