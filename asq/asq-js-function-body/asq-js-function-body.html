@@ -1,7 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../asq-basic-element/asq-basic-element.html">
 
-<polymer-element name="asq-js-function-body" attributes="start end evaluate" extends="asq-basic-element">
+<!-- todo: how to pass the `solution`? A: may -->
+<polymer-element name="asq-js-function-body" attributes="function question solution" extends="asq-basic-element">
   <template>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
@@ -11,14 +12,14 @@
     <div class="asq-js-function-body">
       <h3><content select=".fun-question"></content></h3>
       <div>
-        <pre><code><span id="header" class="asq-code-header">{{ start }}</span>
-          <div id="code" class="form-control asq-code-input" contenteditable=true></div><span id="footer" class="asq-code-footer">{{ end }}</span>
+        <pre><code><span id="header" class="asq-code-header">{{ function }}{</span>
+          <div id="code" class="form-control asq-code-input" contenteditable=true></div><span id="footer" class="asq-code-footer">}</span>
         </code></pre>
       </div>
       <h4>Test</h4>
       <kbd class="asq-command-line">
         <i class="fa fa-chevron-right"></i>
-        <span id="evaluate" class="asq-evaluate">{{ evaluate }}</span>
+        <span id="evaluate" class="asq-evaluate">{{ question }}</span>
       </kbd>
       <br>
       <strong>Result:</strong><br>
