@@ -15,10 +15,10 @@
   <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
   <link rel="import" href="../bower_components/core-icon/core-icon.html">
   
-  <link rel="import" href="./asq-exercise/asq-exercise.html">
+  <link rel="import" href="./asq-elements/asq-elements.html">
 </head>
 
-<body asq-role="viewer" unresolved>
+<body asq-role="presenter" unresolved>
   <section id="section1" center layout>
     <asq-exercise exerciseid="ex1" class="exercise">
       <asq-stem><h2>Exercise 1</h2></asq-stem>
@@ -46,7 +46,7 @@
 
   
   <script>
-  (function() {
+  window.addEventListener('polymer-ready', function(e) {
     function isASQEl(el) {
       return el.localName.indexOf('asq-') != -1;
     }
@@ -60,10 +60,8 @@
     var role = document.querySelector("body").getAttribute("asq-role");
     allAsqElements.forEach(function(elem, index) {
       elem.role = role;
-
     });
-    // console.log(allAsqElements);
-  })();
+  });
   </script>
 </body>
 
