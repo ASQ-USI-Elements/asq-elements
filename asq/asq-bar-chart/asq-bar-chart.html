@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-multi-choice" extends="asq-basic-element">
+<polymer-element name="asq-bar-chart">
   <template>
     <style>
     </style>
@@ -10,7 +11,7 @@
   </template>
 
   <script>
-    Polymer({
+    Polymer('asq-bar-chart', Polymer.mixin({
      
       ready: function () {
 
@@ -20,6 +21,6 @@
         
       }
       
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

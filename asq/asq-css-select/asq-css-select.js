@@ -1,4 +1,4 @@
-Polymer('asq-css-select', {
+Polymer('asq-css-select',  Polymer.mixin({
     domReady: function() {
 
         var attr = this.attributes[0];
@@ -15,7 +15,7 @@ Polymer('asq-css-select', {
 			// $(pane).html(codeTree);
         }
     } 
-});
+}), asqSharedMixin);
  
   
 function initializeCssSelect(codePane, selInput, newHtml) {

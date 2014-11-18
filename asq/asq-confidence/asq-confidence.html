@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+<link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-confidence" attributes="" extends="asq-basic-element">
+<polymer-element name="asq-confidence" attributes="">
   <template>
     <link rel="stylesheet" href="./asq-confidence.css" type="text/css" />
     
@@ -17,7 +17,7 @@
   </template>
 
   <script>
-    Polymer('asq-confidence', {
+    Polymer('asq-confidence', Polymer.mixin({
       getConfidenceLevel: function () {
         var rates = this.$.rating.querySelectorAll("input[type=radio]");
         for (var i=0; i<rates.length; i++) {
@@ -28,6 +28,6 @@
         }
         return 1;      
       }
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

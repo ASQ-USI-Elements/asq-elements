@@ -1,8 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../asq-option/asq-option.html">
-<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+<link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-multi-choice" extends="asq-basic-element">
+<polymer-element name="asq-multi-choice">
   <template>
     <style>
     </style>
@@ -20,7 +20,7 @@
   </template>
 
   <script>
-    Polymer({
+    Polymer('asq-multi-choice', Polymer.mixin({
      
       ready: function () {
 
@@ -29,6 +29,6 @@
       toString: function() {
         return "asq-multi-choice";
       }
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

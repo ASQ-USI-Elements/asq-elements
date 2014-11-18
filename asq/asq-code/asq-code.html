@@ -1,9 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/ace-element/ace-element.html">
-<link rel="import" href="../asq-basic-element/asq-basic-element.html">
 
 
-<polymer-element name="asq-code" attributes="codemode" extends="asq-basic-element">
+
+<polymer-element name="asq-code" attributes="codemode">
   <template>
     <style>
       .ace_code {
@@ -29,10 +29,10 @@
   </template>
 
   <script>
-    Polymer({
+    Polymer('asq-code', Polymer.mixin({
       ready: function  () {
         
       }
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

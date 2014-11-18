@@ -1,16 +1,8 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../asq-progress/asq-progress.html">
-<link rel="import" href="../asq-confidence/asq-confidence.html">
-<link  rel="import" href="../asq-multi-choice/asq-multi-choice.html">
-<link  rel="import" href="../asq-stem/asq-stem.html">
-<link  rel="import" href="../asq-text-input/asq-text-input.html">
-<link  rel="import" href="../asq-code/asq-code.html">
-<link  rel="import" href="../asq-css-select/asq-css-select.html">
-<link  rel="import" href="../asq-js-function-body/asq-js-function-body.html">
-<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+<link rel="import" href="../asq-elements/asq-elements.html">
+<link rel="import" href="../asq-shared-mixin.html">
 
 
-<polymer-element name="asq-exercise" attributes="exerciseid" extends="asq-basic-element">
+<polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
     <style> 
       .submit_button {
@@ -69,7 +61,7 @@
   </template>
 
   <script>
-    Polymer({
+    Polymer('asq-exercise', Polymer.mixin({
       extends: "form",
 
       submit: function() {
@@ -78,9 +70,9 @@
         }
 
         var confidence = this.$.confidence.getConfidenceLevel();
-        console.log(confidence);
+
       }
 
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

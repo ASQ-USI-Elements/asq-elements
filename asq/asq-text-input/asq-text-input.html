@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+<link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-text-input" extends="asq-basic-element">
+<polymer-element name="asq-text-input">
   <template>
     <style>
     </style>
@@ -15,7 +15,7 @@
   </template>
 
   <script>
-    Polymer('asq-text-input', {
+    Polymer('asq-text-input', Polymer.mixin({
       correctAnswer: undefined,
 
       created: function  () {
@@ -30,6 +30,6 @@
       }
      
     
-    });
+    }), asqSharedMixin);
   </script>
 </polymer-element>

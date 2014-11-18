@@ -1,4 +1,4 @@
-Polymer('asq-js-function-body', {
+Polymer('asq-js-function-body', Polymer.mixin({
     domReady: function() {
         var $header = this.$.header;
         var $footer = this.$.footer;
@@ -11,7 +11,7 @@ Polymer('asq-js-function-body', {
         initJsFunctionBody($header.innerHTML, $footer.innerHTML, $testCommand.innerHTML, 
             $codeInput, $asqResult, $resultWrapper, solution);
     } 
-});
+}), asqSharedMixin);
 
 function initJsFunctionBody(theHeader, theFooter, theTestCommand, 
     theCodeInput, theAsqResult, theResultWrapper, theSolution) {
