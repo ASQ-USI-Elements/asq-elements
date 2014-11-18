@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+
+<polymer-element name="asq-option" extends="asq-basic-element">
+  <template>
+    <style>
+    </style>
+
+    <!-- template for viewer -->
+    <template if="{{role=='viewer'}}">
+      <div class="asq-option">
+        <li>
+          <input type="checkbox" name="option">
+          <label for="option"><content></content></label>  
+        </li>
+      </div>
+    </template>
+
+    <!-- template for presenter -->
+    <template  if="{{role=='presenter'}}">
+      <div class="asq-option">
+        <li>
+          <content></content> 
+        </li>
+      </div>
+    </template>    
+
+  </template>
+  <script>
+    Polymer({
+      correct: undefined,
+
+      created: function  () {
+        if ( this.attributes.hasOwnProperty("correct") ) {
+          this.correct = this.attributes["correct"];
+          this.removeAttribute("correct");
+        } else {
+          this.correct = false;
+        }
+
+      },
+
+      domReady: function() {
+
+      }
+      
+    });
+  </script>
+</polymer-element>

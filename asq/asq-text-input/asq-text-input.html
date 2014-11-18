@@ -1,14 +1,17 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-basic-element/asq-basic-element.html">
 
-<polymer-element name="asq-text-input">
+<polymer-element name="asq-text-input" extends="asq-basic-element">
   <template>
     <style>
     </style>
 
+    <!-- (for now) Keep same when either viewer or presenter -->
     <div class="asq-text-input">
       <label for="input"><content></content></label>
       <input type="text" name="input" placeholder="answer here">
     </div>
+
   </template>
 
   <script>
@@ -21,14 +24,11 @@
           this.removeAttribute("correct-answer");
         } 
       },
+
       toString: function() {
         return "asq-text-input";
-      },
-      
-      setRole: function ( role ) {
-        this.role = role;
       }
-
+     
     
     });
   </script>

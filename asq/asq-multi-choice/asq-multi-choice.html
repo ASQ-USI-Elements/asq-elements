@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../asq-option/asq-option.html">
+<link rel="import" href="../asq-basic-element/asq-basic-element.html">
+
+<polymer-element name="asq-multi-choice" extends="asq-basic-element">
+  <template>
+    <style>
+    </style>
+
+    <!-- (for now) Keep same when either viewer or presenter -->
+    <div class="asq-multi-choice">
+      <content select="asq-stem"></content>
+      <div id="choices">
+        <ol>
+          <content></content>
+        </ol>
+      </div>
+    </div>
+    
+  </template>
+
+  <script>
+    Polymer({
+     
+      ready: function () {
+
+      },
+      
+      toString: function() {
+        return "asq-multi-choice";
+      }
+    });
+  </script>
+</polymer-element>
