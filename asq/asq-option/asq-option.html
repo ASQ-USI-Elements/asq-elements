@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-option" >
+<polymer-element name="asq-option" attributes="correct-answer">
   <template>
     <style>
     </style>
@@ -28,12 +28,12 @@
   </template>
   <script>
     Polymer('asq-option', Polymer.mixin({
-      correct: undefined,
+      correctAnswer: undefined,
 
       created: function  () {
-        if ( this.attributes.hasOwnProperty("correct") ) {
-          this.correct = this.attributes["correct"];
-          this.removeAttribute("correct");
+        if ( this.attributes.hasOwnProperty("correct-answer") ) {
+          this.correct = this.attributes["correct-answer"];
+          this.removeAttribute("correct-answer");
         } else {
           this.correct = false;
         }
