@@ -8,16 +8,17 @@
 <link  rel="import" href="asq-css-select.html">
 <link  rel="import" href="asq-js-function-body.html">
 
+
 <polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
     <style> 
-      .submit_button {
+      .green {
         color: #fff;
         background-color: #5cb85c;
         border-color: #4cae4c;
       }
-      .edit_button {
-        background-color: rgb(255, 155, 15);
+      .amber{
+        background-color: #FFC107;
       }
 
       div {
@@ -31,6 +32,40 @@
 
 
     </style>
+
+    <template if="{{role=='viewer'}}">
+      <article id="ex" class="asq-exercise">
+        <div>
+          <content select="asq-stem"></content>
+        </div>
+        <div id="exercises" >
+          <content></content>
+        </div>
+        <div id="buttons">
+          <asq-confidence></asq-confidence>
+          <paper-button role="button" class="green" id='submitbutton{{exerciseid}}'>Submit</paper-button>
+          <paper-button role="button" class="amber" id='editbutton{{exerciseid}}'>Edit</paper-button> 
+        </div>
+      </article>
+    </template>
+
+    <template if="{{role=='presenter'}}">
+      <article id="ex" class="asq-exercise">
+        <div>
+          <content select="asq-stem"></content>
+        </div>
+        <div id="exercises" >
+          <content></content>
+        </div>
+        <div id="buttons">
+          <asq-progress></asq-progress>
+          <paper-button role="button" class="green">Stats</paper-button>
+          <content></content>
+        </div>
+      </article>
+    </template> 
+
+<!-- 
 
     <article id="ex" class="asq-exercise">
       <div>
@@ -50,7 +85,7 @@
           <button class="submit_button">Stats</button>
           <content></content>
         </template> 
-      </div>
+      </div> -->
     </article>
 
   </template>
@@ -60,12 +95,17 @@
       extends: "form",
       role: undefined, 
 
+      //I am trying to see if we can have every question type to implement a superclass called 'asq-question'
+      // then we can check if the childNodes are of type 'asq-question' and pass them the role
+
 
       setRole: function(role) {
         this.role = role;
         var ALL_QUESTION_TYPES = ["asq-multi-choice", "asq-text-input"]
+
         var nodes = this.childNodes.array();
         nodes.forEach(function(elem, index, array) {
+
           if ( ALL_QUESTION_TYPES.indexOf(elem.toString()) != -1 ) {
             elem.setRole(this.role);
           }

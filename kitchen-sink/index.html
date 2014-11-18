@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>polymer asq</title>
+
+  <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  
+  <link rel="import" href="../bower_components/font-roboto/roboto.html">
+  <link rel="import" href="../bower_components/core-elements/core-elements.html">
+  <link rel="import" href="../bower_components/paper-elements/paper-elements.html">
+  
+  <link  rel="import" href="../asq/asq-option.html">
+  <link  rel="import" href="../asq/asq-multi-choice.html">
+  <link  rel="import" href="../asq/asq-exercise.html">
+  <link  rel="import" href="../asq/asq-stem.html">
+  <link  rel="import" href="../asq/asq-text-input.html">
+  <link  rel="import" href="../asq/asq-code.html">
+  <link  rel="import" href="../asq/asq-css-select.html">
+  <link  rel="import" href="../asq/asq-js-function-body.html">
+
+</head>
+
+<body unresolved>
+  <core-header-panel mode="standard" id="core_header_panel">
+    <core-toolbar id="core_toolbar">
+      <core-icon id="core_icon" src="../img/asq-logo.png" style="position:absolute; top:20px; left:10px;"></core-icon>
+
+      <paper-shadow id="role-panel-tabs-container">
+        <paper-tabs id="role-panel-tabs" noink role="tablist" horizontal center layout multi>
+        
+          <paper-tab role="tab" data-target="presenter-section" inline flex center-center horizontal layout>Presenter</paper-tab>
+          <paper-tab role="tab" data-target="viewer-section" inline flex center-center horizontal layout>Viewer</paper-tab>
+          <paper-tab role="tab" data-target="ta-section" inline flex center-center horizontal layout >Teaching Assistant</paper-tab>
+          
+        </paper-tabs>
+      </paper-shadow>
+        
+    </core-toolbar>
+
+
+
+
+
+    <section id="main" horizontal layout>
+      <nav class="element-list" style="padding: 0 5px;">
+      <paper-icon-button icon="menu" title="menu" role="button" tabindex="0" aria-label="menu"></paper-icon-button>
+        <h3>Elements</h3>
+        <core-menu selected="0" multi>  
+          <core-item label="asq-code"></core-item>
+          <core-item label="asq-confidence"></core-item>
+          <core-item label="asq-css-select"></core-item>
+          <core-item label="asq-exercise"></core-item>
+          <core-item label="asq-js-function-body"></core-item>
+          <core-item label="asq-multi-choice"></core-item>
+          <core-item label="asq-option"></core-item>
+          <core-item label="asq-options"></core-item>
+          <core-item label="asq-progress"></core-item>
+          <core-item label="asq-stem"></core-item>
+          <core-item label="asq-text-input"></core-item>
+        </core-menu>
+      </nav>
+      <section class="role-section" id="presenter-section" flex layout vertical>
+        <h2>Presenter</h2>
+        <asq-exercise exerciseid="hello">
+          <asq-stem>Exercise 1</asq-stem>
+
+         <!--  <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
+            <asq-stem>Please use css selectors to select all 'div' elements.</asq-stem>
+          </asq-css-select> -->
+
+          <br>
+          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
+            evaluate="wrap('hello World', 'div');">
+            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
+          <!--   <b class="fun-name">function wrap(str, tagName){</b>
+            <b class="fun-end">}//function ends here</b> -->
+          </asq-js-function-body>
+
+        </asq-exercise>
+      </section>
+       <section class="role-section" id="viewer-section" flex layout vertical>
+       <h2>Viewer</h2>
+        <asq-exercise exerciseid="hello">
+          <asq-stem>Exercise 1</asq-stem>
+
+          <br>
+          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
+            evaluate="wrap('hello World', 'div');">
+            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
+          </asq-js-function-body>
+
+        </asq-exercise>
+      </section>
+       <section class="role-section" id="ta-section" flex layout vertical>
+       <h2>Teaching assistant</h2>
+        <asq-exercise exerciseid="hello">
+          <asq-stem>Exercise 1</asq-stem>
+          <br>
+          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
+            evaluate="wrap('hello World', 'div');">
+            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
+          </asq-js-function-body>
+
+        </asq-exercise>
+      </section>
+    </section>
+  </core-header-panel>
+  
+  <script>
+    window.addEventListener('polymer-ready', function(e) {
+
+      var list = document.querySelectorAll('.role-section');
+      for(var i = 0; i < list.length; ++i) {
+        list[i].style.display = "none";
+      }
+
+      var roleTabs = document.getElementById('role-panel-tabs');
+      roleTabs.addEventListener("core-select", function(evt){
+        document.getElementById(evt.detail.item.dataset.target).style.display = evt.detail.isSelected ? "flex" : "none"
+      })
+      roleTabs.selected = ["0","1"];
+        
+    });
+  </script>
+</body>
+
+</html>

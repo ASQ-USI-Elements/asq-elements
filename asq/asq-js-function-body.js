@@ -22,14 +22,11 @@ function initJsFunctionBody(theHeader, theFooter, theTestCommand,
     var header = theHeader;
     var footer = theFooter;
     var testCommand = theTestCommand;
-    var $codeInput = $(theCodeInput);
-    var $asqResult = $(theAsqResult);
-    var $resultWrapper = $(theResultWrapper);
     var solution= theSolution;
     
     function getSubmittedCode(){
         var submission = header;
-        submission += $codeInput.text();
+        submission += theCodeInput.innerText;
         submission += footer;
         submission += ';\n' + testCommand;
         
@@ -49,15 +46,15 @@ function initJsFunctionBody(theHeader, theFooter, theTestCommand,
     function update(){
         var submission = getSubmittedCode();
         var result = evalInput(submission);
-        $asqResult.text(result);
+        theAsqResult.innerText = result;
         if(result === solution){
-            $resultWrapper.addClass('asq-correct');
+            theResultWrapper.classList.add('asq-correct');
         }else{
-            $resultWrapper.removeClass('asq-correct');
+           theResultWrapper.classList.remove('asq-correct');
         }        
     }
     
-    $codeInput.keypress(function(evt){ 
+    theCodeInput.addEventListener('keypress', function(evt){ 
         var keyCode = evt.keyCode || evt.which; 
         if (keyCode == 9) {
             alert("tono")
@@ -65,7 +62,7 @@ function initJsFunctionBody(theHeader, theFooter, theTestCommand,
         }
     });
     
-    $codeInput.on('input', function(evt){
+    theCodeInput.addEventListener('input', function(evt){
        clearInterval(timer);
        timer = setTimeout(update, interval);
     }); 
