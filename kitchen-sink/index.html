@@ -23,12 +23,13 @@
 
 </head>
 
-<body unresolved class="menu-open">
-  <nav id="element-menu-nav">
-    <paper-icon-button id="element-menu-toggle" icon="menu" title="menu" role="button" tabindex="0" aria-label="menu" touch-action="pan-x pan-y"></paper-icon-button>
-    <section id="element-menu-container">
-      <h3>Elements</h3>
-      <core-menu selected="0" multi id="element-menu">  
+<body class="menu-open" unresolved fullbleed layout horizontal>
+
+  <section id="element-menu-placeholder"></section>
+  <nav id="element-menu-nav" layout vertical>
+    <h3 id="element-menu-header">ASQ elements</h3>
+    <section id="element-menu-container" flex relative>
+      <core-menu selected="0" multi id="element-menu" fit>  
         <core-item label="asq-code"></core-item>
         <core-item label="asq-confidence"></core-item>
         <core-item label="asq-css-select"></core-item>
@@ -43,45 +44,44 @@
       </core-menu>
     </section>
   </nav>
-  <core-header-panel mode="standard" id="main-panel">
-    <core-toolbar id="core_toolbar">
-      <core-icon id="core_icon" src="../img/asq-logo.png" style="position:absolute; top:20px; left:10px;"></core-icon>
+  <core-header-panel mode="seamed" id="main-panel" flex layout horizontal>
+    <core-toolbar id="toolbar">
 
-      <paper-shadow id="role-panel-tabs-container">
-        <paper-tabs id="role-panel-tabs" noink role="tablist" horizontal center layout multi>
+      <span flex> <!-- 1/3 width-->
+        <paper-icon-button id="hamburger" icon="menu" title="menu" role="button" tabindex="0" aria-label="menu" touch-action="pan-x pan-y"></paper-icon-button>
+
+        <img style="height:30px;" src="../img/asq-logo.png">
+      </span>
+
+      <core-menu id="role-panel-tabs" noink role="tablist" flex horizontal center layout multi><!-- 2/3 width -->
         
-          <paper-tab role="tab" data-target="presenter-section" inline flex center-center horizontal layout>Presenter</paper-tab>
-          <paper-tab role="tab" data-target="viewer-section" inline flex center-center horizontal layout>Viewer</paper-tab>
-          <paper-tab role="tab" data-target="ta-section" inline flex center-center horizontal layout >Teaching Assistant</paper-tab>
+          <core-item data-target="presenter-section" inline flex center-center horizontal layout>Presenter</core-item>
+          <core-item data-target="viewer-section" inline flex center-center horizontal layout>Viewer</core-item>
+          <core-item data-target="ta-section" inline flex center-center horizontal layout >Teaching Assistant</core-item>
           
-        </paper-tabs>
-      </paper-shadow>
-        
+      </core-menu>
+      <span flex></span> <!-- 3/3 width-->
+      
     </core-toolbar>
 
 
-    <section id="main" horizontal layout>
-      <section class="role-section" id="presenter-section" flex layout vertical>
-        <h2>Presenter</h2>
+    <section id="main" horizontal layout fit >
+      <section class="role-section" id="presenter-section" flex>
+        <span class="role-name">Presenter</span>
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
 
-         <!--  <asq-css-select datahtmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
-            <asq-stem>Please use css selectors to select all 'div' elements.</asq-stem>
-          </asq-css-select> -->
-
           <br>
-          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
-            evaluate="wrap('hello World', 'div');">
+          <asq-js-function-body function="function wrap(str, tagName){" 
+            question="wrap('hello World', 'div');">
             <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
-          <!--   <b class="fun-name">function wrap(str, tagName){</b>
-            <b class="fun-end">}//function ends here</b> -->
           </asq-js-function-body>
 
         </asq-exercise>
       </section>
-       <section class="role-section" id="viewer-section" flex layout vertical>
-       <h2>Viewer</h2>
+
+      <section class="role-section" id="viewer-section" flex layout vertical self-stretch>
+       <span class="role-name">Viewer</span>
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
 
@@ -93,8 +93,9 @@
 
         </asq-exercise>
       </section>
-       <section class="role-section" id="ta-section" flex layout vertical>
-       <h2>Teaching assistant</h2>
+
+      <section class="role-section" id="ta-section" flex layout vertical self-stretch>
+       <span class="role-name">Teaching Assistant</span>
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
           <br>
@@ -121,12 +122,12 @@
       //setup toggling behavior
       var roleTabs = document.getElementById('role-panel-tabs');
       roleTabs.addEventListener("core-select", function(evt){
-        document.getElementById(evt.detail.item.dataset.target).style.display = evt.detail.isSelected ? "flex" : "none"
+        document.getElementById(evt.detail.item.dataset.target).style.display = evt.detail.isSelected ? "block" : "none"
       })
       roleTabs.selected = ["0","1"];
 
       //element menu
-      var mToggle = document.getElementById("element-menu-toggle");
+      var mToggle = document.getElementById("hamburger");
       var mainPanel = document.getElementById("main-panel");
       mToggle.addEventListener("down", function(){
         document.body.classList.toggle('menu-open')
