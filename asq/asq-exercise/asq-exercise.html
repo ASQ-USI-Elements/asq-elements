@@ -63,6 +63,7 @@
   <script>
     Polymer('asq-exercise', Polymer.mixin({
       extends: "form",
+      role: "viewer",
 
       submit: function() {
         if ( this.role != "viewer" ) {

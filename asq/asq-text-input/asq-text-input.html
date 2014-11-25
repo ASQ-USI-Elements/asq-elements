@@ -1,7 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-text-input" attributes="correct-answer">
+<polymer-element name="asq-text-input" attributes="correctanswer"  >
   <template>
     <style>
     </style>
@@ -9,26 +9,31 @@
     <!-- (for now) Keep same when either viewer or presenter -->
     <div class="asq-text-input">
       <label for="input"><content></content></label>
-      <input type="text" name="input" placeholder="answer here">
+      <input type="text" name="input" placeholder="answerhere" on-keypress="{{keyhandler}}">
     </div>
 
   </template>
 
   <script>
     Polymer('asq-text-input', Polymer.mixin({
-      correctAnswer: undefined,
+      answer: "",
 
       created: function  () {
-        if ( this.attributes.hasOwnProperty("correct-answer") ) {
-          this.correctAnswer = this.attributes["correct-answer"];
-          this.removeAttribute("correct-answer");
+        if ( this.attributes.hasOwnProperty("correctanswer") ) {
+          this.answer = this.attributes["correctanswer"].value;
+          this.removeAttribute("correctanswer");
         } 
       },
 
       toString: function() {
         return "asq-text-input";
+      },
+
+
+      keyhandler: function(event, detail, sender) {
+        console.log(event.which);
+
       }
-     
     
     }), asqSharedMixin);
   </script>
