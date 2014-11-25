@@ -11,39 +11,16 @@
   <link rel="import" href="../bower_components/font-roboto/roboto.html">
   <link rel="import" href="../bower_components/core-elements/core-elements.html">
   <link rel="import" href="../bower_components/paper-elements/paper-elements.html">
-  
-  <link  rel="import" href="../asq/asq-option/asq-option.html">
-  <link  rel="import" href="../asq/asq-multi-choice/asq-multi-choice.html">
-  <link  rel="import" href="../asq/asq-exercise/asq-exercise.html">
-  <link  rel="import" href="../asq/asq-stem/asq-stem.html">
-  <link  rel="import" href="../asq/asq-text-input/asq-text-input.html">
-  <link  rel="import" href="../asq/asq-code/asq-code.html">
-  <link  rel="import" href="../asq/asq-css-select/asq-css-select.html">
-  <link  rel="import" href="../asq/asq-js-function-body/asq-js-function-body.html">
+
+  <link  rel="import" href="./elements/kitchen-sink-menu.html">
 
 </head>
 
 <body class="menu-open" unresolved fullbleed layout horizontal>
 
   <section id="element-menu-placeholder"></section>
-  <nav id="element-menu-nav" layout vertical>
-    <h3 id="element-menu-header">ASQ elements</h3>
-    <section id="element-menu-container" flex relative>
-      <core-menu selected="0" multi id="element-menu" fit>  
-        <core-item label="asq-code"></core-item>
-        <core-item label="asq-confidence"></core-item>
-        <core-item label="asq-css-select"></core-item>
-        <core-item label="asq-exercise"></core-item>
-        <core-item label="asq-js-function-body"></core-item>
-        <core-item label="asq-multi-choice"></core-item>
-        <core-item label="asq-option"></core-item>
-        <core-item label="asq-options"></core-item>
-        <core-item label="asq-progress"></core-item>
-        <core-item label="asq-stem"></core-item>
-        <core-item label="asq-text-input"></core-item>
-      </core-menu>
-    </section>
-  </nav>
+  <kitchen-sink-menu id="element-menu-nav"></kitchen-sink-menu>
+
   <core-header-panel mode="seamed" id="main-panel" flex layout horizontal>
     <core-toolbar id="toolbar">
 
@@ -111,6 +88,10 @@
   
   <script>
     window.addEventListener('polymer-ready', function(e) {
+
+      Polymer.import(['../asq/asq-elements.html'], function(){
+
+      })
 
 
       //hide role panels
