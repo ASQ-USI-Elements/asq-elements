@@ -36,6 +36,7 @@ log/
 # Bower #
 #################
 bower_components/
+components/
 
 # IDE Files #
 #############
