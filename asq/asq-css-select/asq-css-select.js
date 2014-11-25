@@ -2,68 +2,89 @@ Polymer('asq-css-select',  Polymer.mixin({
     domReady: function() {
 
         var attr = this.attributes[0];
-        if ( attr.nodeName === "datahtmlcode" ) {
+        if ( attr.nodeName === "htmlcode" ) {
 			var newHtml = attr.value;
 			var pane = this.$.codePane;
 			var selInput = this.$.sel_input;
 			
 			initializeCssSelect(pane, selInput, newHtml);
 
-			// warp a javascript object with jQuery 
-			// ?? use only javascript ??
-			// this.$.codePane.innerHTML = codeTree;
-			// $(pane).html(codeTree);
         }
+    },
+
+    htmlcodeChanged: function(oldValue, newValue) {
+        var newHtml = newValue;
+        var pane = this.$.codePane;
+        var selInput = this.$.sel_input;
+        
+        initializeCssSelect(pane, selInput, newHtml);
+        console.log("Changed", oldValue, newValue);
     } 
 }), asqSharedMixin);
  
   
 function initializeCssSelect(codePane, selInput, newHtml) {
-    $codePane = $(codePane);
-    var $vDOM = $('<div>' + newHtml + '</div>');
-    var codeTree = createTree($vDOM, "", "");
-    $codePane.html(codeTree);
+    
+    var vDOM = document.createElement("div");
+    vDOM.innerHTML = newHtml;
+    
+    var codeTree = createTree(vDOM, "", "");
+    codePane.innerHTML = codeTree;
 
     // magic happens here
-    var $selInput = $(selInput);
-    $selInput.on('input', function(){
-        var value = $selInput.val();
-        var $clone = $vDOM.clone();
-        var selected = $clone.find(value).each(function(){
-            $(this).attr('data-asq-selected', "true");
-        });
-        codeTree = createTree($clone, "", "");
-        $codePane.html(codeTree);
+    selInput.addEventListener("input", function(){
+        var value = selInput.value;
+        var clone = vDOM.cloneNode(true);
+        try {
+            var selected = clone.querySelectorAll(value);
+            selected.array().forEach(function(elem, index) {
+                elem.setAttribute('data-asq-selected', "true");
+            });
+            codeTree = createTree(clone, "", "");
+            codePane.innerHTML = codeTree;
+        } catch (err) {
+            cleanUp(clone);
+            codeTree = createTree(clone, "", "");
+            codePane.innerHTML = codeTree;
+        }     
     });
 
+    function cleanUp(clone) {
+        var selected = clone.querySelectorAll("[data-asq-selected]");
+        selected.array().forEach(function(elem, index) {
+            elem.removeAttribute('data-asq-selected');
+        });
+        return clone;
+    }
 }
 
 
 // recursive function that creates the escaped tree of the html
 // annotated with spans
-function createTree($el, treeStr, tabwidth){
+function createTree(el, treeStr, tabwidth){
     // console.log("_____________createTree");
     var nextTabwidth = tabwidth || "";
-    $el.children().each(function(){
-        var $this = $(this);
+    // console.log(el, el.childNodes);
+    el.childNodes.array().forEach(function(elem, index){
+
         var spanOpenTag = "<span>";
 
-        if($this.attr('data-asq-selected') === "true"){
+        if(elem.getAttribute('data-asq-selected') === "true"){
             spanOpenTag = '<span style="background-color:#fd2343;">';
         }
 
         treeStr += tabwidth + spanOpenTag;
-        treeStr += escapeHtml(getElOpeningTag(this));
+        treeStr += escapeHtml(getElOpeningTag(elem));
         treeStr += '</span>'+ '\n';
 
 
         //generate tree for children of current
         nextTabwidth = tabwidth + "  ";
-        treeStr = createTree($this, treeStr, nextTabwidth);
+        treeStr = createTree(elem, treeStr, nextTabwidth);
 
         //back to current 
         treeStr += tabwidth + spanOpenTag;
-        treeStr +=  escapeHtml("</" + $this.prop("tagName").toLowerCase() + ">");
+        treeStr +=  escapeHtml("</" + elem.tagName.toLowerCase() + ">");
         treeStr += '</span>'+ '\n';
     });
         
@@ -87,17 +108,17 @@ function escapeHtml(string) {
 }
 
 function getElOpeningTag(el){
-    // console.log("_____________getElOpeningTag");
+
     var str ="<";
-    str += $(el).prop("tagName").toLowerCase();
+    str += el.tagName.toLowerCase();
     
     //get all attribures
-    $.each(el.attributes, function() {
+    el.attributes.array().forEach(function(elem) {
     // this.attributes is not a plain object, but an array
     // of attribute nodes, which contain both the name and value
-        if(this.specified && this.name !=='data-asq-selected' ) {
-          str += ' ' + this.name;
-          str += '="' + this.value + '"';
+        if(elem.specified && elem.name !=='data-asq-selected' ) {
+          str += ' ' + elem.name;
+          str += '="' + elem.value + '"';
         }
     });
     str+=">"
