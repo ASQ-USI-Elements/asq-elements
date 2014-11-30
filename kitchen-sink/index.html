@@ -5,14 +5,16 @@
 
   <title>ASQ - ELements | Kitchen Sink</title>
 
-  <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="/components/webcomponentsjs/webcomponents.js"></script>
   <link rel="stylesheet" href="css/style.css" type="text/css" />
   
-  <link rel="import" href="../bower_components/font-roboto/roboto.html">
-  <link rel="import" href="../bower_components/core-elements/core-elements.html">
-  <link rel="import" href="../bower_components/paper-elements/paper-elements.html">
+  <link rel="import" href="/components/font-roboto/roboto.html">
+  <link rel="import" href="/components/core-elements/core-elements.html">
+  <link rel="import" href="/components/paper-elements/paper-elements.html">
 
-  <link  rel="import" href="./elements/kitchen-sink-menu.html">
+  
+  <link rel="import" href="./elements/kitchen-sink-menu.html">
+  
 
 </head>
 
@@ -48,12 +50,6 @@
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
 
-          <br>
-          <asq-js-function-body function="function wrap(str, tagName){" 
-            question="wrap('hello World', 'div');">
-            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
-          </asq-js-function-body>
-
         </asq-exercise>
       </section>
 
@@ -61,12 +57,7 @@
        <span class="role-name">Viewer</span>
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
-
-          <br>
-          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
-            evaluate="wrap('hello World', 'div');">
-            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
-          </asq-js-function-body>
+         
 
         </asq-exercise>
       </section>
@@ -75,12 +66,7 @@
        <span class="role-name">Teaching Assistant</span>
         <asq-exercise exerciseid="hello">
           <asq-stem>Exercise 1</asq-stem>
-          <br>
-          <asq-js-function-body start="function wrap(str, tagName){" end="}//function ends here"
-            evaluate="wrap('hello World', 'div');">
-            <asq-stem class="fun-question">Implement a function that wraps a given string with an HTML tag:</asq-stem>
-          </asq-js-function-body>
-
+          
         </asq-exercise>
       </section>
     </section>
@@ -89,7 +75,7 @@
   <script>
     window.addEventListener('polymer-ready', function(e) {
 
-      Polymer.import(['../asq/asq-elements.html'], function(){
+      Polymer.import(['/asq-elements.html'], function(){
 
       })
 
