@@ -34,16 +34,34 @@
 
   <section>
 
-    <input is="asq-text-input" value="{{value}}" placeholder="an asq input element">
+    <asq-text-input value="{{value}}" placeholder="">An asq input element</asq-text-input>
     <p>value: {{value}} </p>
 
-    <input is="asq-text-input" type="number" value="{{value2}}" placeholder="number input element">
+    <br>
+    
+    <asq-text-input type="number" value="{{value2}}" placeholder="number input element">A number input</asq-text-input>
     <p>value: {{value2}} </p>
 
   </section>
 
   <script>
-    console.log("ss");
+    window.onmessage = function(e){
+      if (typeof e.data.role == "string" && e.data.role.length > 0) {
+        var allAsqElements = document.querySelectorAll('html /deep/ *');
+        allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
+          return isASQEl(el);
+        });
+
+        //set role for every asq-element in this page
+        allAsqElements.forEach(function(elem, index) {
+          elem.role = e.data.role;
+        });
+      }
+
+      function isASQEl(el) {
+        return el.localName.indexOf('asq-') != -1;
+      } 
+    };
   </script>
 
 </template>

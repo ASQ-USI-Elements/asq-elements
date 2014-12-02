@@ -14,9 +14,10 @@
       <h3 id="element-menu-header">{{label}}</h3>
       <section id="element-menu-container" flex relative>
         <core-menu selected="0" id="element-menu" on-core-select="{{elementSelect}}" fit>  
-          <template repeat="{{elem in elems}}">
+          <!-- <template repeat="{{elem in elems}}">
             <core-item label="{{elem.name}}" tag="{{elem.name}}" url="{{elem.url}}"></core-item>
-          </template>
+          </template> -->
+          <content></content>
         </core-menu>
       </section>
     </nav>
@@ -45,21 +46,21 @@
         <section class="role-section" id="presenter-section" flex>
           <span class="role-name">Presenter</span>
           <div id="pframeContainer">
-            <iframe id="pframe" class="frame" on-load="{{frameLoaded}}"></iframe>
+            <iframe id="pframe" class="frame" on-load="{{pframeLoaded}}"></iframe>
           </div>
         </section>
 
         <section class="role-section" id="viewer-section" flex layout vertical self-stretch>
          <span class="role-name">Viewer</span>
           <div id="vframeContainer">
-            <iframe id="vframe" class="frame" on-load="{{frameLoaded}}"></iframe>
+            <iframe id="vframe" class="frame" on-load="{{vframeLoaded}}"></iframe>
           </div>
         </section>
 
         <section class="role-section" id="ta-section" flex layout vertical self-stretch>
          <span class="role-name">Teaching Assistant</span>
           <div id="tframeContainer">
-            <iframe id="tframe" class="frame" on-load="{{frameLoaded}}"></iframe>
+            <iframe id="tframe" class="frame" on-load="{{tframeLoaded}}"></iframe>
           </div>
         </section>
       </section>
@@ -71,22 +72,16 @@
   <script>
     Polymer({
       item: undefined,
-      elems: [
-        {name: "asq-code"},
-        {name: "asq-css-select"},
-        {name: "asq-exercise"},
-        {name: "asq-js-function-body"},
-        {name: "asq-multi-choice"},
-        {name: "asq-option"},
-        {name: "asq-stem"},
-        {name: "asq-text-input"}
-      ],
 
-      created: function () {
-        this.elems.forEach(function(elem, index){
-          elem.url = "/asq/" + elem.name + "/demo.html"
-        }); 
-      },
+      // elems: [
+      //   {name: "asq-multi-choice", url="/asq/asq-multi-choice/demo.html"},
+      //   {name: "asq-text-input", url="/asq/asq-text-input/demo.html"}
+      //   {name: "asq-css-select", url="/asq/asq-css-select/demo.html"},
+      //   {name: "asq-exercise", url="/asq/asq-exercise/demo.html"},
+      //   {name: "asq-option", url="/asq/asq-option/demo.html"},
+      //   {name: "asq-stem", url="/asq/asq-stem/demo.html"},
+      //   {name: "asq-code", url="/asq/asq-code/demo.html"},
+      // ],
 
       domReady: function() {
         //hide role panels
@@ -103,28 +98,49 @@
       },
 
       elementSelect: function(e, detail) {
+
         if (detail.isSelected) {
           this.item = detail.item;
-          if (this.item.children.length) {
-            this.item.selected = 0;
-          }
-          this.item.tag = this.item.getAttribute('tag');
+          
+          var tag = this.item.getAttribute('tag');
           var url = this.item.getAttribute('url');
-          window.location.hash = this.item.tag;
+          window.location.hash = tag;
 
           this.$.pframe.contentWindow.location.replace(url);
           this.$.vframe.contentWindow.location.replace(url);
           this.$.tframe.contentWindow.location.replace(url);
+
         }
       },
 
-      frameLoaded: function() {
+      pframeLoaded: function(e, detail) {
+
         if (!this.item) {
           return;
         }
         this.$.pframe.contentWindow.addEventListener('polymer-ready', function() {
           this.$.pframe.contentWindow.postMessage({role: "presenter"}, "*");
+        }.bind(this));
+       
+      },
+
+      vframeLoaded: function(e, detail) {
+        
+        if (!this.item) {
+          return;
+        }
+        this.$.vframe.contentWindow.addEventListener('polymer-ready', function() {
           this.$.vframe.contentWindow.postMessage({role: "viewer"}, "*");
+        }.bind(this));
+      },
+
+      tframeLoaded: function(e, detail) {
+
+        if (!this.item) {
+          return;
+        }
+
+        this.$.tframe.contentWindow.addEventListener('polymer-ready', function() {
           this.$.tframe.contentWindow.postMessage({role: "ta"}, "*");
         }.bind(this));
 

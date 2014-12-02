@@ -34,11 +34,31 @@
 
   <section>
 
-   <p is="asq-stem">An asq stem element.</p>
-
-   <asq-stem>Another asq stem element.</asq-stem>
+   <asq-stem><h1>An asq stem element.</h1></asq-stem>
+   <asq-stem><h3>An asq stem element.</h3></asq-stem>
+   <asq-stem><p>An asq stem element.</p></asq-stem>
 
   </section>
+  
+  <script>
+    window.onmessage = function(e){
+      if (typeof e.data.role == "string" && e.data.role.length > 0) {
+        var allAsqElements = document.querySelectorAll('html /deep/ *');
+        allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
+          return isASQEl(el);
+        });
+
+        //set role for every asq-element in this page
+        allAsqElements.forEach(function(elem, index) {
+          elem.role = e.data.role;
+        });
+      }
+
+      function isASQEl(el) {
+        return el.localName.indexOf('asq-') != -1;
+      } 
+    };
+  </script>
 
 </template>
 

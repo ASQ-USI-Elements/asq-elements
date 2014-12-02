@@ -1,7 +1,13 @@
 <link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-text-input" extends="input">
+<polymer-element name="asq-text-input" attributes="type value placeholder">
+  <template>
+    <div class="asq-text-input">
+      <label for="input"><content></content></label>
+      <input type="{{type}}" name="input" value="{{value}}" placeholder="{{placeholder}}">
+    </div>
+  </template>
 
   <script>
     Polymer('asq-text-input', Polymer.mixin({

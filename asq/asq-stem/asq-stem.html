@@ -1,8 +1,13 @@
 <link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-stem" extends="p">
+<polymer-element name="asq-stem">
 
+  <template>
+    <div class="asq-stem">
+      <content></content>
+    </div>
+  </template>
 
   <script>
     Polymer('asq-stem', {

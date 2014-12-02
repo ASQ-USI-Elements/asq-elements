@@ -69,12 +69,13 @@
   font-size: 14px;
 }
 
-#element-menu core-item{
+polyfill-next-selector { content: 'core-menu#element-menu core-item'; }
+::content core-item{
   padding: 0 12px;
   cursor: pointer;
 }
-
-#element-menu core-item:hover{
+polyfill-next-selector { content: 'core-menu#element-menu core-item'; }
+::content core-item:hover{
   background: rgba(79, 125, 201, 0.3);
 }
 
