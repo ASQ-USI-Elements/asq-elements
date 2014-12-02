@@ -3,35 +3,32 @@
 <link rel="import" href="../asq-shared-mixin.html">
 
 
-<polymer-element name="asq-code" attributes="codemode">
+<polymer-element name="asq-code" attributes="code theme mode value readonly wrap fontSize tabSize">
   <template>
     <style>
-      .ace_code {
-        /*margin-bottom: 0.5em;
-        margin-left: 2em*/
+      .code {
+        background-color: grey;
       }
 
       #ace_element {
-        width: 400px;
-        height: 300px;
-        position: relative;
+        width: 100%;
+        height: 100%;
+        display: block;
       }
 
     </style>
 
-    <div class="asq-code" >
-      <h3><content select=".title"></content><h3>
-        <div class="ace_code">
-          <p><content select="asq-stem"></content><p>
-          <ace-element mode={{codemode}} value="" id="ace_element">function test() { var x = true; }</ace-element>
-        </div>
+    <div class="code" >
+      <h2>{{title}}</h2>
+      <ace-element theme="{{theme}}" mode="{{mode}}" value="funtion(y) { return y+1; }" readonly="{{readonly}}" wrap="{{wrap}}" fontSize="{{fontSize}}" tabSize="tabSize" id="ace_element">
+      </ace-element>
     </div>
   </template>
 
   <script>
     Polymer('asq-code', Polymer.mixin({
-      ready: function  () {
-        
+      domReady: function  () {
+        console.log(this, this.textContent);
       }
     }), asqSharedMixin);
   </script>

@@ -6,7 +6,7 @@ Polymer('asq-js-function-body', Polymer.mixin({
         var $codeInput = this.$.code;
         var $asqResult = this.$.result;
         var $resultWrapper = this.$.wrapper;
-        var solution= '"<div>hello World</div>"'; 
+        var solution= this.sol ? this.sol : "?"; 
 
         initJsFunctionBody($header.innerHTML, $footer.innerHTML, $testCommand.innerHTML, 
             $codeInput, $asqResult, $resultWrapper, solution);
