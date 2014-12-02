@@ -44,30 +44,26 @@
     </core-toolbar>
 
 
-    <section id="main" horizontal layout fit >
+    <section id="main" horizontal layout fit>
       <section class="role-section" id="presenter-section" flex>
         <span class="role-name">Presenter</span>
-        <asq-exercise exerciseid="hello">
-          <asq-stem>Exercise 1</asq-stem>
-
-        </asq-exercise>
+        <div id="frameContainer">
+          
+        </div>
       </section>
 
       <section class="role-section" id="viewer-section" flex layout vertical self-stretch>
        <span class="role-name">Viewer</span>
-        <asq-exercise exerciseid="hello">
-          <asq-stem>Exercise 1</asq-stem>
-         
-
-        </asq-exercise>
+        <div id="frameContainer">
+          <iframe id="vFrame" on-load="{{frameLoaded}}"></iframe>
+        </div>
       </section>
 
       <section class="role-section" id="ta-section" flex layout vertical self-stretch>
        <span class="role-name">Teaching Assistant</span>
-        <asq-exercise exerciseid="hello">
-          <asq-stem>Exercise 1</asq-stem>
+        <div id="frameContainer">
           
-        </asq-exercise>
+        </div>
       </section>
     </section>
   </core-header-panel>

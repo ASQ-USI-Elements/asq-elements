@@ -30,17 +30,35 @@
 </head>
 <body>
 
-<template is="auto-binding">
+<template is="auto-binding" >
 
   <section>
 
-    <asq-option id="a1" >This is an option</asq-option>
+    <asq-option id="a1">This is an opton</asq-option>
 
-    <asq-option id="a2" >This is another option</asq-option>
+    <asq-option id="a2">This is another option</asq-option>
 
   </section>
 
+  <script>
+    window.onmessage = function(e){
+      if (typeof e.data.role == "string" && e.data.role.length > 0) {
+        var allAsqElements = document.querySelectorAll('html /deep/ *');
+        allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
+          return isASQEl(el);
+        });
 
+        //set role for every asq-element in this page
+        allAsqElements.forEach(function(elem, index) {
+          elem.role = e.data.role;
+        });
+      }
+
+      function isASQEl(el) {
+        return el.localName.indexOf('asq-') != -1;
+      } 
+    };
+  </script>
 
 </template>
 

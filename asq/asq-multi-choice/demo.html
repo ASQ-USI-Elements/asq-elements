@@ -36,15 +36,34 @@
 
   <section>
 
-    <asq-multi-choice>
-      <asq-stem>hello</asq-stem>
-      <asq-option>ooo1</asq-option>
-      <asq-option>ooo2</asq-option>
+    <asq-multi-choice >
+      <asq-stem>An asq-multi-choice question.</asq-stem>
+      <asq-option>Option 1</asq-option>
+      <asq-option>Option 2</asq-option>
     </asq-multi-choice>
 
 
   </section>
 
+  <script>
+  window.onmessage = function(e){
+    if (typeof e.data.role == "string" && e.data.role.length > 0) {
+      var allAsqElements = document.querySelectorAll('html /deep/ *');
+      allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
+        return isASQEl(el);
+      });
+
+      //set role for every asq-element in this page
+      allAsqElements.forEach(function(elem, index) {
+        elem.role = e.data.role;
+      });
+    }
+
+    function isASQEl(el) {
+      return el.localName.indexOf('asq-') != -1;
+    } 
+  };
+</script>
 
 
 </template>

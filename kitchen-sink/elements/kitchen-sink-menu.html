@@ -40,9 +40,9 @@
     <nav id="element-menu-nav" layout vertical>
       <h3 id="element-menu-header">ASQ elements</h3>
       <section id="element-menu-container" flex relative>
-        <core-menu selected="0" multi id="element-menu" fit>  
+        <core-menu selected="0" multi id="element-menu" on-core-select="{{menuSelect}}" fit>  
           <template repeat="{{elem in elems}}">
-            <core-item label="{{elem.name}}"></core-item>
+            <core-item label="{{elem.name}}" tag="{{elem.name}}" url="{{elem.url}}"></core-item>
           </template>
         </core-menu>
       </section>
@@ -58,12 +58,35 @@
       {name: "asq-js-function-body"},
       {name: "asq-multi-choice"},
       {name: "asq-option"},
-      {name: "asq-options"},
       {name: "asq-stem"},
       {name: "asq-text-input"}
-    ]
-  }
-  );
+    ],
+
+    created: function () {
+      this.elems.forEach(function(elem, index){
+        elem.url = "/asq/" + elem.name + "/demo.html"
+      });
+    },
+
+    menuSelect: function(e, detail) {
+      console.log(detail.item);
+      // if (detail.isSelected) {
+      //   this.item = detail.item;
+      //   if (this.item.children.length) {
+      //     this.item.selected = 0;
+      //   }
+      //   this.item.tag = this.item.getAttribute('tag');
+      //   var url = this.item.getAttribute('url');
+      //   this.$.frame.contentWindow.location.replace(url);
+      //   window.location.hash = this.item.tag;
+      //   if (this.narrow) {
+      //     this.$.drawerPanel.closeDrawer();
+      //   } else {
+      //     this.animateCard();
+      //   }
+      // }
+    }
+  });
 
   </script>
 </polymer-element>

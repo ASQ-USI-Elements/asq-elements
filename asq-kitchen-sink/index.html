@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>ASQ - ELements | Kitchen Sink</title>
+
+  <script src="/components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  
+  <link rel="import" href="/components/font-roboto/roboto.html">
+  <link rel="import" href="/components/core-elements/core-elements.html">
+  <link rel="import" href="/components/paper-elements/paper-elements.html">
+
+  
+  <link rel="import" href="./elements/kitchen-sink-menu.html">
+  
+
+</head>
+
+<body class="menu-open" unresolved fullbleed layout horizontal>
+
+  
+  <script>
+    window.addEventListener('polymer-ready', function(e) {
+
+      Polymer.import(['/asq-elements.html'], function(){
+
+      })
+
+
+      //hide role panels
+      var list = document.querySelectorAll('.role-section');
+      for(var i = 0; i < list.length; ++i) {
+        list[i].style.display = "none";
+      }
+
+      //setup toggling behavior
+      var roleTabs = document.getElementById('role-panel-tabs');
+      roleTabs.addEventListener("core-select", function(evt){
+        document.getElementById(evt.detail.item.dataset.target).style.display = evt.detail.isSelected ? "block" : "none"
+      })
+      roleTabs.selected = ["0","1"];
+
+      //element menu
+      var mToggle = document.getElementById("hamburger");
+      var mainPanel = document.getElementById("main-panel");
+      mToggle.addEventListener("down", function(){
+        document.body.classList.toggle('menu-open')
+      });
+        
+    });
+  </script>
+</body>
+
+</html>

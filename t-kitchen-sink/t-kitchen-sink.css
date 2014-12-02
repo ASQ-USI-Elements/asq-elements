@@ -1,0 +1,96 @@
+#element-menu-nav #element-menu-placeholder #main-panel {
+  float: right;
+  display: inline;
+}
+
+#element-menu-nav {
+  width:220px;
+  position:relative;
+  left: -220px;
+  transition: all 0.2s ease-in;
+  height:100%;
+  background-color: #E5E5E5;
+
+}
+
+#element-menu-placeholder{
+  width: 220px;
+  height: 100%;
+  transition: width 0.2s ease-in;
+  background-color: yellow;
+}
+
+.menu-open #element-menu-placeholder{
+  width: 220px;
+}
+
+#element_menu {
+  font-size: 16px;
+  left: -10px;
+  top: 0px;
+  position: relative;
+  width: inherit;
+  height: 100%;
+
+}
+
+#element-menu core-item{
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+#element-menu core-item:hover{
+  background: rgba(79, 125, 201, 0.3);
+}
+
+#element-menu-header{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 500;
+  font-size: 22px;
+  padding:15px 10px 16px;
+  margin: 5px 0;
+  color: rgb(79, 125, 201);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+
+#main-panel {
+  width: 100%;
+  height: 100%;
+  left: 220px;
+  top: 0px;
+  position: relative;
+  transition: all 0.2s ease-in;
+
+}
+
+.role-section{
+  border-right: 1px solid rgba(0,0,0,0.12);
+  padding: 1em 2em;
+  overflow-x: scroll;
+}
+
+.role-name{
+  display: block;
+  padding: 5px;
+  color: rgb(79, 125, 201);
+}
+
+#core_toolbar {
+  color: rgb(255, 255, 255);
+  background-color: #78909C;
+}
+
+#role-panel-tabs core-item{
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#role-panel-tabs core-item:hover{
+  background-color: #607D8B;
+}
+
+#section {
+  height: 100%;
+  background: grey;
+}

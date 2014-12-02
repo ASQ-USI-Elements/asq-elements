@@ -3,11 +3,11 @@
 <head>
   <meta name="asq-elements" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <title>asq-text-input</title>
+  <title>asq-option</title>
 
   <script src="/components/webcomponentsjs/webcomponents.js"></script>
 
-  <link href="asq-text-input.html" rel="import">
+  <link href="asq-css-select.html" rel="import">
 
   <style shim-shadowdom>
     body {
@@ -34,17 +34,13 @@
 
   <section>
 
-    <input is="asq-text-input" value="{{value}}" placeholder="an asq input element">
-    <p>value: {{value}} </p>
-
-    <input is="asq-text-input" type="number" value="{{value2}}" placeholder="number input element">
-    <p>value: {{value2}} </p>
+     <asq-css-select htmlcode="<ul><li class='daclass'><ul id='ghouan'><li></li><li></li><li></li></ul></li><li></li><li></li><li><div><p></p><p class='pclass'></p></div></li></ul>">
+        <asq-stem>Select 'div' elements:<asq-stem>
+    </asq-css-select>
 
   </section>
 
-  <script>
-    console.log("ss");
-  </script>
+
 
 </template>
 
