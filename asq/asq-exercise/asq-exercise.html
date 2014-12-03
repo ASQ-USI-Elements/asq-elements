@@ -8,6 +8,8 @@
 <link rel="import" href="../asq-confidence/asq-confidence.html">
 <link rel="import" href="../asq-progress/asq-progress.html">
 
+<link rel="import" href="/components/paper-button/paper-button.html">
+
 <link rel="import" href="../asq-shared-mixin.html">
 
 
@@ -18,7 +20,7 @@
       .submit_button {
         color: #fff;
         background-color: #5cb85c;
-        border-color: #4cae4c;
+        /*border-color: #4cae4c;*/
       }
       .edit_button {
         background-color: rgb(255, 155, 15);
@@ -30,8 +32,9 @@
       }
 
       footer {
-        /*position:relative;*/
-        bottom: 0;
+        position:absolute;
+        bottom: 1em;
+        right: 1em;
         text-align: right;
       }
      
@@ -47,8 +50,8 @@
         </div>
         <footer id="buttons">
           <asq-confidence id="confidence"></asq-confidence>
-          <button class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</button>
-          <button class="edit_button" id="editbutton{{exerciseid}}">Edit</button>    
+          <paper-button is="paper-button" class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</paper-button>
+          <paper-button is="paper-button" class="edit_button" id="editbutton{{exerciseid}}">Edit</paper-button>    
         </footer>
       </article>
     </template>
@@ -64,7 +67,7 @@
         </div>
         <footer id="buttons">
           <asq-progress></asq-progress>
-          <button class="submit_button">Stats</button>
+          <paper-button is="paper-button" class="submit_button">Stats</paper-button>
         </footer>
       </article>
     </template> 
