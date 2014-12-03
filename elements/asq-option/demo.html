@@ -3,11 +3,11 @@
 <head>
   <meta name="asq-elements" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <title>asq-stem</title>
+  <title>asq-option</title>
 
-  <script src="/components/webcomponentsjs/webcomponents.js"></script>
+  <script src="../../components/webcomponentsjs/webcomponents.js"></script>
 
-  <link href="asq-stem.html" rel="import">
+  <link href="asq-option.html" rel="import">
 
   <style shim-shadowdom>
     body {
@@ -30,16 +30,16 @@
 </head>
 <body>
 
-<template is="auto-binding">
+<template is="auto-binding" >
 
   <section>
 
-   <asq-stem><h1>An asq stem element.</h1></asq-stem>
-   <asq-stem><h3>An asq stem element.</h3></asq-stem>
-   <asq-stem><p>An asq stem element.</p></asq-stem>
+    <asq-option id="a1">This is an opton</asq-option>
+
+    <asq-option id="a2">This is another option</asq-option>
 
   </section>
-  
+
   <script>
     window.onmessage = function(e){
       if (typeof e.data.role == "string" && e.data.role.length > 0) {

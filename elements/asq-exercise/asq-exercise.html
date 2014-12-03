@@ -8,7 +8,7 @@
 <link rel="import" href="../asq-confidence/asq-confidence.html">
 <link rel="import" href="../asq-progress/asq-progress.html">
 
-<link rel="import" href="/components/paper-button/paper-button.html">
+<link rel="import" href="../../components/paper-button/paper-button.html">
 
 <link rel="import" href="../asq-shared-mixin.html">
 
@@ -16,6 +16,10 @@
 <polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
     <style> 
+
+      :host{
+        display: block;
+      }
    
       .submit_button {
         color: #fff;
@@ -32,10 +36,10 @@
       }
 
       footer {
-        position:absolute;
+      /*  position:absolute;
         bottom: 1em;
         right: 1em;
-        text-align: right;
+        text-align: right;*/
       }
      
     </style>
@@ -48,10 +52,12 @@
         <div id="exercises" >
           <content></content>
         </div>
-        <footer id="buttons">
-          <asq-confidence id="confidence"></asq-confidence>
-          <paper-button is="paper-button" class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</paper-button>
-          <paper-button is="paper-button" class="edit_button" id="editbutton{{exerciseid}}">Edit</paper-button>    
+        <footer id="buttons"  horizontal end-justified layout>
+          <div>
+            <asq-confidence id="confidence"></asq-confidence>
+            <paper-button is="paper-button" class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</paper-button>
+            <paper-button is="paper-button" class="edit_button" id="editbutton{{exerciseid}}">Edit</paper-button> 
+          </div>   
         </footer>
       </article>
     </template>
@@ -65,9 +71,11 @@
         <div id="exercises" >
           <content></content>
         </div>
-        <footer id="buttons">
-          <asq-progress></asq-progress>
-          <paper-button is="paper-button" class="submit_button">Stats</paper-button>
+        <footer id="buttons" horizontal end-justified layout>
+          <div>
+            <asq-progress></asq-progress>
+            <paper-button is="paper-button" class="submit_button">Stats</paper-button>
+          </div>
         </footer>
       </article>
     </template> 
