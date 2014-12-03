@@ -1,12 +1,12 @@
-<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
 <polymer-element name="asq-css-select" attributes="htmlcode">
   <template>
     <style>
       #code {
-        width:600px;
-        height: 400px;
+        width:100%;
+        height: 100%;
         background: #272822;
         color: #FCFCFC;
       }
@@ -15,14 +15,14 @@
         margin-bottom: 1em;
       }
     </style>
-    <!-- (for now) Keep same when either viewer or presenter -->
+
     <div class="asq-select-css">
       <content select="asq-stem"></content>
       <div id="code">
         <pre><code id="codePane"></code></pre> 
       </div> 
       <div id="input">
-        <label>Selector: </label><input type="text" id="sel_input">
+        <label>Selector: </label><input type="text" id="sel_input" on-input="{{input}}">
       </div> 
     </div>
   </template>

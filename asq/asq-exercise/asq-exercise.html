@@ -1,14 +1,26 @@
-<link rel="import" href="../asq-elements.html">
+<link rel="import" href="../asq-option/asq-option.html">
+<link rel="import" href="../asq-multi-choice/asq-multi-choice.html">
+<link rel="import" href="../asq-stem/asq-stem.html">
+<link rel="import" href="../asq-text-input/asq-text-input.html">
+<link rel="import" href="../asq-code/asq-code.html">
+<link rel="import" href="../asq-css-select/asq-css-select.html">
+<link rel="import" href="../asq-js-function-body/asq-js-function-body.html">
+<link rel="import" href="../asq-confidence/asq-confidence.html">
+<link rel="import" href="../asq-progress/asq-progress.html">
+
+<link rel="import" href="/components/paper-button/paper-button.html">
+
 <link rel="import" href="../asq-shared-mixin.html">
 
 
 <polymer-element name="asq-exercise" attributes="exerciseid">
   <template>
     <style> 
+   
       .submit_button {
         color: #fff;
         background-color: #5cb85c;
-        border-color: #4cae4c;
+        /*border-color: #4cae4c;*/
       }
       .edit_button {
         background-color: rgb(255, 155, 15);
@@ -19,11 +31,13 @@
         margin-right: 2em;
       }
 
-      #buttons {
+      footer {
+        position:absolute;
+        bottom: 1em;
+        right: 1em;
         text-align: right;
       }
-
-
+     
     </style>
 
     <template if="{{role=='viewer'}}">
@@ -34,11 +48,11 @@
         <div id="exercises" >
           <content></content>
         </div>
-        <div id="buttons">
+        <footer id="buttons">
           <asq-confidence id="confidence"></asq-confidence>
-          <button class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</button>
-          <button class="edit_button"  id="editbutton{{exerciseid}}">Edit</button>    
-        </div>
+          <paper-button is="paper-button" class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</paper-button>
+          <paper-button is="paper-button" class="edit_button" id="editbutton{{exerciseid}}">Edit</paper-button>    
+        </footer>
       </article>
     </template>
 
@@ -51,10 +65,10 @@
         <div id="exercises" >
           <content></content>
         </div>
-        <div id="buttons">
+        <footer id="buttons">
           <asq-progress></asq-progress>
-          <button class="submit_button">Stats</button>
-        </div>
+          <paper-button is="paper-button" class="submit_button">Stats</paper-button>
+        </footer>
       </article>
     </template> 
 
@@ -63,7 +77,10 @@
   <script>
     Polymer('asq-exercise', Polymer.mixin({
       extends: "form",
-      role: "viewer",
+
+      publish: {
+        role: "viewer",
+      },
 
       submit: function() {
         if ( this.role != "viewer" ) {

@@ -1,4 +1,4 @@
-<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
 <polymer-element name="asq-option" attributes="correctanswer">
@@ -28,8 +28,13 @@
   </template>
   <script>
     Polymer('asq-option', Polymer.mixin({
+
+      publish: {
+        role: "viewer",
+      },
+
+
       isCorrectAnswer: false,
-      role: "viewer",
 
       created: function  () {
         if ( this.attributes.hasOwnProperty("correctanswer") ) {

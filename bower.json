@@ -1,5 +1,5 @@
 {
-  "name": "polymer_elements",
+  "name": "asq-elements",
   "version": "0.0.0",
   "homepage": "https://github.com/ASQ-USI/asq-elements",
   "authors": [
@@ -26,7 +26,18 @@
     "core-elements": "Polymer/core-elements",
     "paper-elements": "Polymer/paper-elements",
     "ace-element": "git@github.com:PolymerLabs/ace-element.git",
-    "jquery": "~2.1.1",
-    "asq-designer": "git@github.com:ASQ-USI/asq-designer.git"
+    "jquery": "~2.1.1"
+  },
+  "resolutions": {
+    "paper-shadow": "master",
+    "paper-toast": "master",
+    "paper-tabs": "master",
+    "paper-toggle-button": "master",
+    "core-component-page": "master",
+    "core-a11y-keys": "master",
+    "core-focusable": "master",
+    "core-icon": "master",
+    "core-iconset-svg": "master",
+    "core-iconset": "master"
   }
 }

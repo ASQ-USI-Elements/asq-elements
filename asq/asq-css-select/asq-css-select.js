@@ -1,36 +1,22 @@
 Polymer('asq-css-select',  Polymer.mixin({
-    domReady: function() {
 
-        var attr = this.attributes[0];
-        if ( attr.nodeName === "htmlcode" ) {
-			var newHtml = attr.value;
-			var pane = this.$.codePane;
-			var selInput = this.$.sel_input;
-			
-			initializeCssSelect(pane, selInput, newHtml);
+  domReady: function() {
 
-        }
-    },
-
-    htmlcodeChanged: function(oldValue, newValue) {
-        var newHtml = newValue;
+    var attr = this.attributes[0];
+    if ( attr.nodeName === "htmlcode" ) {
+        var newHtml = attr.value;
         var pane = this.$.codePane;
         var selInput = this.$.sel_input;
         
-        initializeCssSelect(pane, selInput, newHtml);
-        console.log("Changed", oldValue, newValue);
-    } 
-}), asqSharedMixin);
- 
-  
-function initializeCssSelect(codePane, selInput, newHtml) {
-    
+        this.initializeCssSelect(pane, selInput, newHtml);
+    }
+  },
+
+  initializeCssSelect: function(codePane, selInput, newHtml) {
     var vDOM = document.createElement("div");
     vDOM.innerHTML = newHtml;
-    
     var codeTree = createTree(vDOM, "", "");
     codePane.innerHTML = codeTree;
-
     // magic happens here
     selInput.addEventListener("input", function(){
         var value = selInput.value;
@@ -56,59 +42,60 @@ function initializeCssSelect(codePane, selInput, newHtml) {
         });
         return clone;
     }
-}
+  },
+
+  
 
 
+}), asqSharedMixin);
+
+//TODO: ????
 // recursive function that creates the escaped tree of the html
 // annotated with spans
 function createTree(el, treeStr, tabwidth){
-    // console.log("_____________createTree");
-    var nextTabwidth = tabwidth || "";
-    // console.log(el, el.childNodes);
-    el.childNodes.array().forEach(function(elem, index){
+  // console.log("_____________createTree");
+  var nextTabwidth = tabwidth || "";
+  // console.log(el, el.childNodes);
+  el.childNodes.array().forEach(function(elem, index){
 
-        var spanOpenTag = "<span>";
+      var spanOpenTag = "<span>";
 
-        if(elem.getAttribute('data-asq-selected') === "true"){
-            spanOpenTag = '<span style="background-color:#fd2343;">';
-        }
+      if(elem.getAttribute('data-asq-selected') === "true"){
+          spanOpenTag = '<span style="background-color:#fd2343;">';
+      }
 
-        treeStr += tabwidth + spanOpenTag;
-        treeStr += escapeHtml(getElOpeningTag(elem));
-        treeStr += '</span>'+ '\n';
-
-
-        //generate tree for children of current
-        nextTabwidth = tabwidth + "  ";
-        treeStr = createTree(elem, treeStr, nextTabwidth);
-
-        //back to current 
-        treeStr += tabwidth + spanOpenTag;
-        treeStr +=  escapeHtml("</" + elem.tagName.toLowerCase() + ">");
-        treeStr += '</span>'+ '\n';
-    });
-        
-    return treeStr;
-}
+      treeStr += tabwidth + spanOpenTag;
+      treeStr += escapeHtml(getElOpeningTag(elem));
+      treeStr += '</span>'+ '\n';
 
 
-var entityMap = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': '&quot;',
-    "'": '&#39;',
-    "/": '&#x2F;'
-};
+      //generate tree for children of current
+      nextTabwidth = tabwidth + "  ";
+      treeStr = createTree(elem, treeStr, nextTabwidth);
 
-function escapeHtml(string) {
+      //back to current 
+      treeStr += tabwidth + spanOpenTag;
+      treeStr +=  escapeHtml("</" + elem.tagName.toLowerCase() + ">");
+      treeStr += '</span>'+ '\n';
+  });
+      
+  return treeStr;
+
+  function escapeHtml(string) {
+    var entityMap = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': '&quot;',
+      "'": '&#39;',
+      "/": '&#x2F;'
+    };
     return String(string).replace(/[&<>"'\/]/g, function (s) {
       return entityMap[s];
     });
-}
+  }
 
-function getElOpeningTag(el){
-
+  function getElOpeningTag(el){
     var str ="<";
     str += el.tagName.toLowerCase();
     
@@ -123,4 +110,12 @@ function getElOpeningTag(el){
     });
     str+=">"
     return str;
+  }
+
 }
+
+
+
+
+
+
