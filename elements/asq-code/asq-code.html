@@ -3,32 +3,50 @@
 <link rel="import" href="../asq-shared-mixin.html">
 
 
-<polymer-element name="asq-code" attributes="code theme mode value readonly wrap fontSize tabSize">
+<polymer-element name="asq-code" attributes="theme mode value readonly wrap fontSize tabSize label">
   <template>
     <style>
-      .code {
-        background-color: grey;
+      :host {
+        display: block;
+        /*position: absolute;*/
       }
+      .code {
+        /*background-color: grey;*/
+        display: block;
+        position: absolute;
 
-      #ace_element {
         width: 100%;
         height: 100%;
+      }
+
+      #ace {
         display: block;
+        position: absolute;
+        
+        width: 100%;
+        height: 100%;
       }
 
     </style>
 
-    <div class="code" >
-      <h2>{{title}}</h2>
-      <ace-element theme="{{theme}}" mode="{{mode}}" value="funtion(y) { return y+1; }" readonly="{{readonly}}" wrap="{{wrap}}" fontSize="{{fontSize}}" tabSize="tabSize" id="ace_element">
-      </ace-element>
+    <div class="code">
+      <h2>{{label}}</h2>
+      <ace-element theme="{{theme}}" mode="{{mode}}" value="{{value}}" readonly="{{readonly}}" wrap="{{wrap}}" fontSize="{{fontSize}}" tabSize="tabSize" id="ace"></ace-element>
     </div>
   </template>
 
   <script>
     Polymer('asq-code', Polymer.mixin({
+      mode: 'javascript',
+      theme: 'monokai',
+      readonly: false,
+      value: null,
+      wrap: false,
+
       domReady: function  () {
-        console.log(this, this.textContent);
+        // console.log("1", this.textContent);
+        this.$.ace.value = this.textContent;
+        // console.log("2", this.$.ace.value);
       }
     }), asqSharedMixin);
   </script>
