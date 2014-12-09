@@ -13,7 +13,7 @@
 <link rel="import" href="../asq-shared-mixin.html">
 
 
-<polymer-element name="asq-exercise" attributes="exerciseid">
+<polymer-element name="asq-exercise" attributes="exerciseid" >
   <template>
     <style> 
 
@@ -36,7 +36,7 @@
       }
 
       footer {
-      /*  position:absolute;
+       /* position:absolute;
         bottom: 1em;
         right: 1em;
         text-align: right;*/
@@ -52,7 +52,7 @@
         <div id="exercises">
           <content></content>
         </div>
-        <footer id="buttons"   horizontal end-justified layout>
+        <footer id="buttons" horizontal end-justified layout>
           <div>
             <asq-confidence id="confidence"></asq-confidence>
             <paper-button is="paper-button" class="submit_button" id='submitbutton{{exerciseid}}' on-click="{{submit}}">Submit</paper-button>
@@ -83,22 +83,65 @@
   </template>
 
   <script>
-    Polymer('asq-exercise', Polymer.mixin({
-      extends: "form",
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = true;
+      var type_ = "asq-exercise";
 
-      publish: {
-        role: "viewer",
-      },
+      Polymer('asq-exercise', Polymer.mixin({
+        exerciseid: 0,
 
-      submit: function() {
-        if ( this.role != "viewer" ) {
-          return;
+        publish: {
+          role: "viewer",
+        },
+
+        submit: function() {
+          if ( this.role !== "viewer" ) {
+            return;
+          }
+
+          var questions = this.childNodes.array().filter(function(el) {
+            return el.isASQElement && el.isQuestion;
+          });
+
+          console.log("questions ", questions);
+
+          var submisstion = [];
+          questions.forEach(function(elem, index) {
+            console.log(index, elem.hello);
+            submisstion.push(elem.collectAnswer());
+          });
+
+          var confidence = this.$.confidence.getConfidenceLevel();
+
+          var a = {
+            question: this.exerciseid,
+            submisstion: submisstion,
+            confidence: confidence
+          }
+
+          console.log("SUMMISSION", a);
+          return a;
+        },
+
+        ready: function() {
+
+        },
+
+        get isASQElement() {
+          return isASQElement_;
+        },
+
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
         }
 
-        var confidence = this.$.confidence.getConfidenceLevel();
+      }), asqSharedMixin);
 
-      }
-
-    }), asqSharedMixin);
+    })();
   </script>
 </polymer-element>

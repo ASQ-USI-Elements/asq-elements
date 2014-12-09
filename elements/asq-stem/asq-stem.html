@@ -10,8 +10,25 @@
   </template>
 
   <script>
-    Polymer('asq-stem', {
-      
-    });
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = false;
+      var type_ = "asq-stem";
+
+      Polymer('asq-stem', Polymer.mixin({
+        
+        get isASQElement() {
+          return isASQElement_;
+        },
+
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
+        }
+      }), asqSharedMixin);
+    })();
   </script>
 </polymer-element>

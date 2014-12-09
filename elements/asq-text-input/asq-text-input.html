@@ -10,31 +10,57 @@
   </template>
 
   <script>
-    Polymer('asq-text-input', Polymer.mixin({
-      publish: {
-        correctAnswer: ''
-      },
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = true;
+      var type_ = "asq-text-input";
 
-      answer: "",
+      Polymer('asq-text-input', Polymer.mixin({
+        publish: {
+          role: 'viewer',
+          correctAnswer: ''
+        },
 
-      created: function  () {
-        if ( this.attributes.hasOwnProperty("correctAnswer") ) {
-          this.answer = this.attributes["correctAnswer"].value;
-          this.removeAttribute("correctanswer");
-          // this.attributes["correctanswer"].value = "heh";
-        } 
-      },
+        answer: "",
 
-      toString: function() {
-        return "asq-text-input";
-      },
+        created: function  () {
+          if ( this.attributes.hasOwnProperty("correctAnswer") ) {
+            this.answer = this.attributes["correctAnswer"].value;
+            this.removeAttribute("correctanswer");
+            // this.attributes["correctanswer"].value = "heh";
+          } 
+        },
+
+        toString: function() {
+          return "asq-text-input";
+        },
 
 
-      keyhandler: function(event, detail, sender) {
-        // console.log(event.which);
+        keyhandler: function(event, detail, sender) {
+          // console.log(event.which);
 
-      }
-    
-    }), asqSharedMixin);
+        },
+
+        get isASQElement() {
+          return isASQElement_;
+        },
+
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
+        },
+
+        collectAnswer: function() {
+          if ( this.role !== "viewer" ) {
+            return;
+          }
+          return this.value;
+        }
+      
+      }), asqSharedMixin);
+    })();
   </script>
 </polymer-element>

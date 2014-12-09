@@ -17,17 +17,27 @@
   </template>
 
   <script>
-    Polymer('asq-confidence', Polymer.mixin({
-      getConfidenceLevel: function () {
-        var rates = this.$.rating.querySelectorAll("input[type=radio]");
-        for (var i=0; i<rates.length; i++) {
-          var rate = rates[i];
-          if ( rate.checked == true ) {
-            return rate.value;
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = false;
+
+      Polymer('asq-confidence', Polymer.mixin({
+
+        getConfidenceLevel: function () {
+          var rates = this.$.rating.querySelectorAll("input[type=radio]");
+          for (var i=0; i<rates.length; i++) {
+            var rate = rates[i];
+            if ( rate.checked == true ) {
+              return rate.value;
+            }
           }
+          return 1;      
+        },
+
+        get isASQElement() {
+          return isASQElement_;
         }
-        return 1;      
-      }
-    }), asqSharedMixin);
+      }), asqSharedMixin);
+    })();
   </script>
 </polymer-element>

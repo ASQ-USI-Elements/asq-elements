@@ -14,14 +14,19 @@
   </template>
 
   <script>
-    Polymer('asq-progress', {
-      value: 0,
-      max: 0,
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = false;
 
-      ready: function () {
-        this.value = 3;
-        this.max = 10;
-      }
-    });
+      Polymer('asq-progress', {
+        value: 0,
+        max: 0,
+
+        ready: function () {
+          this.value = 3;
+          this.max = 10;
+        }
+      });
+    })();
   </script>
 </polymer-element>

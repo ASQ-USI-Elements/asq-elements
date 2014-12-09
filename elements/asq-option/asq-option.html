@@ -10,7 +10,7 @@
     <template if="{{role=='viewer'}}">
       <div class="asq-option">
         <li>
-          <input type="checkbox" name="option">
+          <input id="option" type="checkbox" name="option">
           <label for="option"><content></content></label>  
         </li>
       </div>
@@ -30,6 +30,7 @@
     (function() {
       var isASQElement_ = true;
       var isQuestion_ = false;
+      var type_ = "asq-option";
 
       Polymer('asq-option', Polymer.mixin({
 
@@ -50,12 +51,22 @@
 
         },
 
-        domReady: function() {
-
-        },
-
         get isASQElement() {
           return isASQElement_;
+        },
+
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
+        },
+
+        collectAnswer: function() {
+          if ( this.role === "viewer" ) {
+            return this.$.option.checked;
+          }
         }
        
       }), asqSharedMixin );

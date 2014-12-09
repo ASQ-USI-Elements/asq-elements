@@ -20,11 +20,49 @@
   </template>
 
   <script>
+  (function() {
+    var isASQElement_ = true;
+    var isQuestion_ = true;
+    var type_ = "asq-multi-choice";
+
+
     Polymer('asq-multi-choice', Polymer.mixin({
      
-      ready: function () {
+      publish: {
+        role: "viewer"
+      },
 
+      get isASQElement() {
+        return isASQElement_;
+      },
+
+      get isQuestion() {
+        return isQuestion_;
+      },
+
+      get type() {
+        return type_;
+      },
+
+      collectAnswer: function() {
+        if ( this.role !== "viewer" ) {
+          return;
+        }
+
+        var options = this.childNodes.array().filter(function(el) {
+          return el.isASQElement && el.type == "asq-option";
+        });
+
+        console.log(options);
+        var submisstion = [];
+        options.forEach(function(elem, index) {
+          submisstion.push(elem.collectAnswer());
+        });   
+
+        return submisstion;
       }
+
     }), asqSharedMixin);
+  })();
   </script>
 </polymer-element>
