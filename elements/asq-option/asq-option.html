@@ -1,7 +1,7 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-option" attributes="correctanswer">
+<polymer-element name="asq-option" attributes="correctanswer hello">
   <template>
     <style>
     </style>
@@ -27,30 +27,39 @@
 
   </template>
   <script>
-    Polymer('asq-option', Polymer.mixin({
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = false;
 
-      publish: {
-        role: "viewer",
-      },
+      Polymer('asq-option', Polymer.mixin({
 
+        publish: {
+          role: "viewer",
+          
+        },
 
-      isCorrectAnswer: false,
+        isCorrectAnswer: false,
+        
+        created: function  () {
+          if ( this.attributes.hasOwnProperty("correctanswer") ) {
+            this.isCorrectAnswer = this.attributes["correctanswer"];
+            // this.removeAttribute("correctanswer");
+          } else {
+            this.isCorrectAnswer = false;
+          }
 
-      created: function  () {
-        if ( this.attributes.hasOwnProperty("correctanswer") ) {
-          this.isCorrectAnswer = this.attributes["correctanswer"];
-          this.removeAttribute("correctanswer");
-        } else {
-          this.isCorrectAnswer = false;
+        },
+
+        domReady: function() {
+
+        },
+
+        get isASQElement() {
+          return isASQElement_;
         }
-
-      },
-
-      domReady: function() {
-
-      },
-
        
-    }), asqSharedMixin );
+      }), asqSharedMixin );
+    })()
+    
   </script>
 </polymer-element>

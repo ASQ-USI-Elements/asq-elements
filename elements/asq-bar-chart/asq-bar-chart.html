@@ -12,6 +12,7 @@
 
   <script>
     Polymer('asq-bar-chart', Polymer.mixin({
+
      
       ready: function () {
 
@@ -19,7 +20,13 @@
 
       plot: function() {
         
+      }, 
+
+      isASQElement: function() {
+        return true;
       }
+
+
       
     }), asqSharedMixin);
   </script>

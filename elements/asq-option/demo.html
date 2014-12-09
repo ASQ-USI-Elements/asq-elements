@@ -41,11 +41,14 @@
   </section>
 
   <script>
+
+
     window.onmessage = function(e){
       if (typeof e.data.role == "string" && e.data.role.length > 0) {
         var allAsqElements = document.querySelectorAll('html /deep/ *');
         allAsqElements = Array.prototype.slice.call(allAsqElements).filter(function(el) {
-          return isASQEl(el);
+          return el.isASQElement;
+          // return isASQEl(el);
         });
 
         //set role for every asq-element in this page
@@ -55,9 +58,25 @@
       }
 
       function isASQEl(el) {
-        return el.localName.indexOf('asq-') != -1;
+        // if ( el.localName.indexOf('asq-') != -1 ) {
+        //   // if ( el.isASQElement() == true ) {
+        //   //   console.log(">>>");
+        //   //   x = el.isASQElement();
+        //   // }
+        //   console.log(el.isASQElement);
+        // }
+        // if ( el.hasOwnProperty("publish") ) {
+        //   console.log(el, el.publish);
+        //   if ( el.publish.hasOwnProperty("isASQEl") ) {
+        //     return true;
+        //   }
+        // }
+        return el.isASQElement;
+        // return el.isASQEl;
       } 
     };
+
+
   </script>
 
 </template>
