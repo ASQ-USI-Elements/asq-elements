@@ -57,7 +57,7 @@
           if ( this.role !== "viewer" ) {
             return;
           }
-          return this.value;
+          return this.value.replace(/[\s]+/g, " ").trim();
         }
       
       }), asqSharedMixin);

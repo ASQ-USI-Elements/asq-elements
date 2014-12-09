@@ -1,53 +1,83 @@
-Polymer('asq-css-select',  Polymer.mixin({
+(function() {
+  var isASQElement_ = true;
+  var isQuestion_ = true;
+  var type_ = "asq-css-select";
 
-  domReady: function() {
+  Polymer('asq-css-select',  Polymer.mixin({
 
-    var attr = this.attributes[0];
-    if ( attr.nodeName === "htmlcode" ) {
-        var newHtml = attr.value;
-        var pane = this.$.codePane;
-        var selInput = this.$.sel_input;
-        
-        this.initializeCssSelect(pane, selInput, newHtml);
-    }
-  },
+    publish: {
+      role: "viewer",
+      
+    },
 
-  initializeCssSelect: function(codePane, selInput, newHtml) {
-    var vDOM = document.createElement("div");
-    vDOM.innerHTML = newHtml;
-    var codeTree = createTree(vDOM, "", "");
-    codePane.innerHTML = codeTree;
-    // magic happens here
-    selInput.addEventListener("input", function(){
-        var value = selInput.value;
-        var clone = vDOM.cloneNode(true);
-        try {
-            var selected = clone.querySelectorAll(value);
-            selected.array().forEach(function(elem, index) {
-                elem.setAttribute('data-asq-selected', "true");
-            });
-            codeTree = createTree(clone, "", "");
-            codePane.innerHTML = codeTree;
-        } catch (err) {
-            cleanUp(clone);
-            codeTree = createTree(clone, "", "");
-            codePane.innerHTML = codeTree;
-        }     
-    });
+    get isASQElement() {
+      return isASQElement_;
+    },
 
-    function cleanUp(clone) {
-        var selected = clone.querySelectorAll("[data-asq-selected]");
-        selected.array().forEach(function(elem, index) {
-            elem.removeAttribute('data-asq-selected');
-        });
-        return clone;
-    }
-  },
+    get isQuestion() {
+      return isQuestion_;
+    },
 
-  
+    get type() {
+      return type_;
+    },
+
+    collectAnswer: function() {
+      if ( this.role !== "viewer" ) {
+        return;
+      }
+      return this.value.replace(/[\s]+/g, " ").trim();
+    },
 
 
-}), asqSharedMixin);
+    // Logic
+    domReady: function() {
+
+      var attr = this.attributes[0];
+      if ( attr.nodeName === "htmlcode" ) {
+          var newHtml = attr.value;
+          var pane = this.$.codePane;
+          var selInput = this.$.sel_input;
+          
+          this.initializeCssSelect(pane, selInput, newHtml);
+      }
+    },
+
+    initializeCssSelect: function(codePane, selInput, newHtml) {
+      var vDOM = document.createElement("div");
+      vDOM.innerHTML = newHtml;
+      var codeTree = createTree(vDOM, "", "");
+      codePane.innerHTML = codeTree;
+      // magic happens here
+      selInput.addEventListener("input", function(){
+          var value = selInput.value;
+          var clone = vDOM.cloneNode(true);
+          try {
+              var selected = clone.querySelectorAll(value);
+              selected.array().forEach(function(elem, index) {
+                  elem.setAttribute('data-asq-selected', "true");
+              });
+              codeTree = createTree(clone, "", "");
+              codePane.innerHTML = codeTree;
+          } catch (err) {
+              cleanUp(clone);
+              codeTree = createTree(clone, "", "");
+              codePane.innerHTML = codeTree;
+          }     
+      });
+
+      function cleanUp(clone) {
+          var selected = clone.querySelectorAll("[data-asq-selected]");
+          selected.array().forEach(function(elem, index) {
+              elem.removeAttribute('data-asq-selected');
+          });
+          return clone;
+      }
+    },
+
+  }), asqSharedMixin);
+
+})();
 
 //TODO: ????
 // recursive function that creates the escaped tree of the html

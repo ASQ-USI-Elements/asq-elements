@@ -16,6 +16,10 @@
       var type_ = "asq-stem";
 
       Polymer('asq-stem', Polymer.mixin({
+
+        publish: {
+          role: "viewer",
+        },
         
         get isASQElement() {
           return isASQElement_;

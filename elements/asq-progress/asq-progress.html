@@ -1,7 +1,7 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../asq-shared-mixin.html">
 
-<polymer-element name="asq-progress" attributes="" extends="asq-basic-element">
+<polymer-element name="asq-progress">
   <template>
     <style></style>
     
@@ -17,8 +17,26 @@
     (function() {
       var isASQElement_ = true;
       var isQuestion_ = false;
+      var type_ = "asq-progress";
 
       Polymer('asq-progress', {
+
+        publish: {
+          role: "viewer",
+        },
+        
+        get isASQElement() {
+          return isASQElement_;
+        },
+
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
+        },
+
         value: 0,
         max: 0,
 
@@ -26,7 +44,8 @@
           this.value = 3;
           this.max = 10;
         }
+
       });
-    })();
+    }) ();
   </script>
 </polymer-element>

@@ -11,23 +11,41 @@
   </template>
 
   <script>
-    Polymer('asq-bar-chart', Polymer.mixin({
+    (function() {
+      var isASQElement_ = true;
+      var isQuestion_ = false;
+      var type_ = "asq-bar-chart";
 
-     
-      ready: function () {
+      Polymer('asq-bar-chart', Polymer.mixin({
 
-      },
+       
+        ready: function () {
 
-      plot: function() {
+        },
+
+        plot: function() {
+          
+        }, 
+
+        publish: {
+          role: "viewer",
+        },
         
-      }, 
+        get isASQElement() {
+          return isASQElement_;
+        },
 
-      isASQElement: function() {
-        return true;
-      }
+        get isQuestion() {
+          return isQuestion_;
+        },
+
+        get type() {
+          return type_;
+        }
 
 
       
     }), asqSharedMixin);
+  })();
   </script>
 </polymer-element>
