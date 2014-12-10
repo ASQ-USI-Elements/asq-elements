@@ -1,26 +1,9 @@
 (function() {
-  var isASQElement_ = true;
-  var isQuestion_ = true;
-  var type_ = "asq-css-select";
 
-  Polymer('asq-css-select',  Polymer.mixin({
+  var p = {
 
-    publish: {
-      role: "viewer",
-      
-    },
-
-    get isASQElement() {
-      return isASQElement_;
-    },
-
-    get isQuestion() {
-      return isQuestion_;
-    },
-
-    get type() {
-      return type_;
-    },
+    isQuestion_: true,
+    type_: "asq-css-select",
 
     collectAnswer: function() {
       if ( this.role !== "viewer" ) {
@@ -75,7 +58,10 @@
       }
     },
 
-  }), asqSharedMixin);
+  }
+  ASQ.mixin(p, ASQ.ElementType);
+  ASQ.mixin(p, ASQ.Role);
+  Polymer('asq-css-select', p);
 
 })();
 

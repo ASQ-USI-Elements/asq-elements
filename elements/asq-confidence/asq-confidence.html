@@ -1,5 +1,5 @@
 <link rel="import" href="../../components/polymer/polymer.html">
-<link rel="import" href="../asq-shared-mixin.html">
+<link rel="import" href="../asq-element-setup/asq-element-setup.html">
 
 <polymer-element name="asq-confidence">
   <template>
@@ -18,11 +18,10 @@
 
   <script>
     (function() {
-      var isASQElement_ = true;
-      var isQuestion_ = false;
-      var type_ = "asq-confidence";
 
-      Polymer('asq-confidence', Polymer.mixin({
+      var p = {
+
+        type_: "asq-confidence",
 
         getConfidenceLevel: function () {
           var rates = this.$.rating.querySelectorAll("input[type=radio]");
@@ -35,22 +34,11 @@
           return 1;      
         },
 
-        publish: {
-          role: "viewer",
-        },
-        
-        get isASQElement() {
-          return isASQElement_;
-        },
+      }
+      ASQ.mixin(p, ASQ.ElementType);
+      ASQ.mixin(p, ASQ.Role);
 
-        get isQuestion() {
-          return isQuestion_;
-        },
-
-        get type() {
-          return type_;
-        }
-      }), asqSharedMixin);
+      Polymer('asq-confidence', p);
     })();
   </script>
 </polymer-element>

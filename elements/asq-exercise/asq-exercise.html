@@ -5,12 +5,11 @@
 <link rel="import" href="../asq-code/asq-code.html">
 <link rel="import" href="../asq-css-select/asq-css-select.html">
 <link rel="import" href="../asq-js-function-body/asq-js-function-body.html">
+
 <link rel="import" href="../asq-confidence/asq-confidence.html">
 <link rel="import" href="../asq-progress/asq-progress.html">
-
 <link rel="import" href="../../components/paper-button/paper-button.html">
-
-<link rel="import" href="../asq-shared-mixin.html">
+<link rel="import" href="../asq-element-setup/asq-element-setup.html">
 
 
 <polymer-element name="asq-exercise" attributes="exerciseid" >
@@ -26,7 +25,7 @@
         background-color: #5cb85c;
       }
       .disabled-button {
-        background-color: #000000;
+        background-color: #817E7E;
       }
       .edit-button {
         color: #fff;
@@ -87,16 +86,12 @@
 
   <script>
     (function() {
-      var isASQElement_ = true;
-      var isQuestion_ = true;
-      var type_ = "asq-exercise";
 
-      Polymer('asq-exercise', Polymer.mixin({
+      var p = {
         exerciseid: 0,
 
-        publish: {
-          role: "viewer",
-        },
+        isQuestion_: true,
+        type_: "asq-exercise",
 
         submit: function() {
           if ( this.role !== "viewer" ) {
@@ -141,20 +136,11 @@
           }
         },
 
+      }
 
-        get isASQElement() {
-          return isASQElement_;
-        },
-
-        get isQuestion() {
-          return isQuestion_;
-        },
-
-        get type() {
-          return type_;
-        }
-
-      }), asqSharedMixin);
+      ASQ.mixin(p, ASQ.ElementType);
+      ASQ.mixin(p, ASQ.Role);
+      Polymer('asq-exercise', p);
 
     })();
   </script>

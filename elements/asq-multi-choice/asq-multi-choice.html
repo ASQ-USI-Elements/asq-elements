@@ -1,6 +1,6 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../asq-option/asq-option.html">
-<link rel="import" href="../asq-shared-mixin.html">
+<link rel="import" href="../asq-element-setup/asq-element-setup.html">
 
 <polymer-element name="asq-multi-choice">
   <template>
@@ -21,28 +21,9 @@
 
   <script>
   (function() {
-    var isASQElement_ = true;
-    var isQuestion_ = true;
-    var type_ = "asq-multi-choice";
-
-
-    Polymer('asq-multi-choice', Platform.mixin({
-     
-      publish: {
-        role: "viewer"
-      },
-
-      get isASQElement() {
-        return isASQElement_;
-      },
-
-      get isQuestion() {
-        return isQuestion_;
-      },
-
-      get type() {
-        return type_;
-      },
+    var p = {
+      isQuestion_ : true,
+      type_: "asq-multi-choice",
 
       collectAnswer: function() {
         if ( this.role !== "viewer" ) {
@@ -62,7 +43,12 @@
         return submisstion;
       }
 
-    }), asqSharedMixin);
+    }
+
+    ASQ.mixin(p, ASQ.ElementType);
+    ASQ.mixin(p, ASQ.Role);
+    Polymer('asq-multi-choice', p);
+
   })();
   </script>
 </polymer-element>

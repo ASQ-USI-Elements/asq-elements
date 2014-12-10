@@ -1,6 +1,6 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/ace-element/ace-element.html">
-<link rel="import" href="../asq-shared-mixin.html">
+<link rel="import" href="../asq-element-setup/asq-element-setup.html">
 
 
 <polymer-element name="asq-code" attributes="theme mode value readonly wrap fontSize tabSize label">
@@ -36,18 +36,30 @@
   </template>
 
   <script>
-    Polymer('asq-code', Polymer.mixin({
-      mode: 'javascript',
-      theme: 'monokai',
-      readonly: false,
-      value: null,
-      wrap: false,
+    (function () {
 
-      domReady: function  () {
-        // console.log("1", this.textContent);
-        this.$.ace.value = this.textContent;
-        // console.log("2", this.$.ace.value);
-      }
-    }), asqSharedMixin);
+      var p = {
+        isQuestion_: true,
+        type_: "asq-code",
+
+        mode: 'javascript',
+        theme: 'monokai',
+        readonly: false,
+        value: null,
+        wrap: false,
+
+        domReady: function  () {
+          // console.log("1", this.textContent);
+          this.$.ace.value = this.textContent;
+          // console.log("2", this.$.ace.value);
+        }
+      };
+
+      ASQ.mixin(p, ASQ.ElementType);
+      ASQ.mixin(p, ASQ.Role);
+      Polymer('asq-code', p);
+
+    })();
+    
   </script>
 </polymer-element>

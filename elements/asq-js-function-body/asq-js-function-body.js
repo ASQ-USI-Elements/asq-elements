@@ -1,26 +1,8 @@
 (function() {
-  var isASQElement_ = true;
-  var isQuestion_ = true;
-  var type_ = "asq-js-function-body";
+  var p = {
 
-  Polymer('asq-js-function-body', Polymer.mixin({
-
-    publish: {
-      role: "viewer",
-      
-    },
-
-    get isASQElement() {
-      return isASQElement_;
-    },
-
-    get isQuestion() {
-      return isQuestion_;
-    },
-
-    get type() {
-      return type_;
-    },
+   isQuestion_: true,
+   type_ : "asq-js-function-body",
 
     collectAnswer: function() {
       if ( this.role === "viewer" ) {
@@ -41,7 +23,12 @@
       initJsFunctionBody($header.innerHTML, $footer.innerHTML, $testCommand.innerHTML, 
           $codeInput, $asqResult, $resultWrapper, solution);
     } 
-  }), asqSharedMixin);
+  };
+
+  ASQ.mixin(p, ASQ.ElementType);
+  ASQ.mixin(p, ASQ.Role);
+  Polymer('asq-js-function-body', p);
+  
 })();
 
 function initJsFunctionBody(theHeader, theFooter, theTestCommand, 
