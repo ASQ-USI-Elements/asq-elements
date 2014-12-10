@@ -9,7 +9,7 @@
 <link rel="import" href="../asq-confidence/asq-confidence.html">
 <link rel="import" href="../asq-progress/asq-progress.html">
 <link rel="import" href="../../components/paper-button/paper-button.html">
-<link rel="import" href="../asq-element-setup/asq-element-setup.html">
+<link rel="import" href="../asq-element-conf/asq-element-conf.html">
 
 
 <polymer-element name="asq-exercise" attributes="exerciseid" >
@@ -46,7 +46,7 @@
      
     </style>
 
-    <template if="{{role=='viewer'}}">
+    <template if="{{role==Roles.VIEWER}}">
       <article id="ex" class="asq-exercise">
         <div>
           <content select="asq-stem"></content>
@@ -65,7 +65,7 @@
     </template>
 
 
-    <template if="{{role=='presenter'}}">
+    <template if="{{role==Roles.PRESENTER}}">
       <article id="ex" class="asq-exercise">
         <div>
           <content select="asq-stem"></content>
@@ -77,6 +77,22 @@
           <div>
             <asq-progress></asq-progress>
             <paper-button id="stats" class="submit-button" raised="true">Stats</paper-button>
+          </div>
+        </footer>
+      </article>
+    </template> 
+
+    <template if="{{role==Roles.TA}}">
+      <article id="ex" class="asq-exercise">
+        <div>
+          <content select="asq-stem"></content>
+        </div>
+        <div id="exercises">
+          <content></content>
+        </div>
+        <footer id="buttons" horizontal end-justified layout>
+          <div>
+            <asq-progress></asq-progress>
           </div>
         </footer>
       </article>
@@ -94,7 +110,7 @@
         type_: "asq-exercise",
 
         submit: function() {
-          if ( this.role !== "viewer" ) {
+          if ( this.role !== this.Roles.VIEWER ) {
             return;
           }
 
@@ -106,13 +122,12 @@
 
           var submisstion = [];
           questions.forEach(function(elem, index) {
-            submisstion.push(elem.collectAnswer());
+            submisstion.push(elem.getSubmission());
           });
 
           var confidence = this.$.confidence.getConfidenceLevel();
 
           var a = {
-            question: this.exerciseid,
             submisstion: submisstion,
             confidence: confidence
           }
@@ -138,8 +153,8 @@
 
       }
 
-      ASQ.mixin(p, ASQ.ElementType);
-      ASQ.mixin(p, ASQ.Role);
+      ASQ.mixin(p, ASQ.ElementType, ASQ.Role);
+      // ASQ.mixin(p, );
       Polymer('asq-exercise', p);
 
     })();

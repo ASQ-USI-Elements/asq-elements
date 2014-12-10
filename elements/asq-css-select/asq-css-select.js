@@ -5,11 +5,22 @@
     isQuestion_: true,
     type_: "asq-css-select",
 
-    collectAnswer: function() {
-      if ( this.role !== "viewer" ) {
+    getSubmission: function() {
+      if ( this.role !== this.Roles.VIEWER ) {
         return;
       }
-      return this.value.replace(/[\s]+/g, " ").trim();
+
+      if ( typeof this.value == 'undefined' ) {
+        this.value = "";
+      }
+
+      submisstion = this.value.replace(/[\s]+/g, " ").trim();
+      
+      return {
+        questionId: "",
+        timestamp: new Date(),
+        submisstion: submisstion
+      };
     },
 
 
