@@ -5,11 +5,20 @@
 <polymer-element name="asq-css-select" attributes="htmlcode">
   <template>
     <style>
+
+      #asq_css {
+        width: 100%;
+        height: 100%;
+        max-height: 500px;
+        display: block;
+      }
+
       #code {
         width: 100%;
         height: 100%;
         background: #272822;
         color: #FCFCFC;
+        display: block;
       }
       #input {
         margin-top: 1em;
@@ -17,10 +26,10 @@
       }
     </style>
 
-    <div class="asq-select-css">
+    <div id="asq_css">
       <content select="asq-stem"></content>
-      <div id="code">
-        <pre><code id="codePane"></code></pre> 
+      <div id="code" data-scroll="y">
+        <pre data-scroll="y"><code id="codePane" data-scroll="y"></code></pre> 
       </div> 
       <div id="input">
         <label>Selector: </label><input type="text" id="sel_input" value="{{value}}" on-input="{{input}}">

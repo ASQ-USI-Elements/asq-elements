@@ -5,6 +5,8 @@ function init() {
     setRole("viewer");
   } else if (search.match(/presenter/)) {
     setRole("presenter");
+  } else if (search.match(/ta/)) {
+    setRole("ta");
   } else if (typeof cb !== 'undefined' && typeof cb === 'function') {
     // cb.call(this, null, true);
   }
