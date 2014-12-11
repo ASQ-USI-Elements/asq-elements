@@ -25,9 +25,11 @@
     "webcomponentsjs": "polymer/webcomponentsjs",
     "core-elements": "Polymer/core-elements",
     "paper-elements": "Polymer/paper-elements",
-    "ace-element": "git@github.com:PolymerLabs/ace-element.git",
-    "jquery": "~2.1.1"
+    "ace-element": "PolymerLabs/ace-element",
+    "jquery": "~2.1.1",
+    "code-mirror": "PolymerLabs/code-mirror",
   },
+  
   "resolutions": {
     "paper-shadow": "master",
     "paper-toast": "master",

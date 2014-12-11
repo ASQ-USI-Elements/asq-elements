@@ -1,37 +1,44 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/ace-element/ace-element.html">
+<link rel="import" href="../../components/code-mirror/code-mirror.html">
 <link rel="import" href="../asq-element-conf/asq-element-conf.html">
 
-
-<polymer-element name="asq-code" attributes="theme mode value readonly wrap fontSize tabSize label">
+<polymer-element name="asq-code" attributes="theme mode value tabSize label">
   <template>
     <style>
       :host {
-        display: block;
-        /*position: absolute;*/
-      }
-      .code {
-        /*background-color: grey;*/
-        display: block;
-        position: absolute;
 
-        width: 100%;
-        height: 100%;
+      }
+      #code {
+        margin: 1em;
       }
 
       #ace {
-        display: block;
-        position: absolute;
-        
-        width: 100%;
-        height: 100%;
+        width: 98%;
+        height: 510px;
+        margin: 1em;
+        position: relative;
+      }
+
+      #code_mirror {
+        width: 98%;
+        height: 510px;
+        margin: 1em;
+        position: relative;
       }
 
     </style>
 
-    <div class="code">
-      <h2>{{label}}</h2>
-      <ace-element theme="{{theme}}" mode="{{mode}}" value="{{value}}" readonly="{{readonly}}" wrap="{{wrap}}" fontSize="{{fontSize}}" tabSize="tabSize" id="ace"></ace-element>
+    <div id="code">
+      <div>
+        <!-- <content></content> -->
+        <asq-stem><h2>Complete the following program.</h2></asq-stem>
+      </div>
+      <div>
+        <code-mirror theme="{{theme}}" mode="{{mode}}" value="{{value}}"  tabSize="{{tabSize}}" id="code_mirror">{{value}}</code-mirror>
+       <!--  <ace-element theme="{{theme}}" mode="{{mode}}" value="{{value}}" tabSize="{{tabSize}}" id="ace">{{value}}</ace-element> -->
+    
+      </div>
     </div>
   </template>
 
@@ -45,13 +52,10 @@
         mode: 'javascript',
         theme: 'monokai',
         readonly: false,
-        value: null,
         wrap: false,
 
         domReady: function  () {
-          // console.log("1", this.textContent);
-          this.$.ace.value = this.textContent;
-          // console.log("2", this.$.ace.value);
+         
         },
 
         getSubmission: function() {
@@ -63,7 +67,9 @@
           //   this.value = "";
           // }
 
-          submisstion = "";
+          //TODO: improve this
+          submisstion = this.$.code_mirror.mirror.getValue().replace(/[\s]+/g, " ").trim();
+          // submisstion = this.$.ace.editor.getSession().getValue().replace(/[\s]+/g, " ").trim();
           
           return {
             questionId: "",
