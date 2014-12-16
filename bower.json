@@ -30,7 +30,7 @@
     "code-mirror": "PolymerLabs/code-mirror",
     "asq-code":"ASQ-USI/asq-code#master",
     "asq-css-select":"ASQ-USI/asq-css-select#master",
-    "asq-element-conf":"ASQ-USI/asq-element-conf#master",
+    "asq-element-common":"ASQ-USI/asq-element-common#master",
     "asq-exercise":"ASQ-USI/asq-exercise#master",
     "asq-js-function-body":"ASQ-USI/asq-js-function-body#master",
     "asq-multi-choice":"ASQ-USI/asq-multi-choice#master",
