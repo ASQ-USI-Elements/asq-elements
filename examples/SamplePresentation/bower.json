@@ -1,0 +1,27 @@
+{
+  "name": "sample-presentation",
+  "private": "true",
+  "version": "0.0.0",
+  "authors": [
+    "ZhenfeiNie <zhenfei.nie@gmail.com>"
+  ],
+  "description": "asq-elements",
+  "main": "app.js",
+  "keywords": [
+    "asq",
+    "shadowDOM"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "asq-elements": "ASQ-USI/asq-elements#master",
+    "webcomponentsjs": "~0.5.2"
+  }
+}
