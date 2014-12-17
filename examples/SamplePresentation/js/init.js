@@ -1,14 +1,9 @@
 function init() {
-  //detect if we need to render anything or the user is just chilin
-  var search = window.location.search;
-  if (search.match(/viewer/)) {
+  var roleNode = document.querySelector("body").getAttributeNode("data-asq-role");
+  if ( typeof roleNode == undefined ) {
     setRole("viewer");
-  } else if (search.match(/presenter/)) {
-    setRole("presenter");
-  } else if (search.match(/ta/)) {
-    setRole("ta");
-  } else if (typeof cb !== 'undefined' && typeof cb === 'function') {
-    // cb.call(this, null, true);
+  } else {
+    setRole(roleNode.value);
   }
 }
 
