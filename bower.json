@@ -21,24 +21,23 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.5.1",
+    "polymer": "~0.5.4",
     "webcomponentsjs": "polymer/webcomponentsjs",
     "core-elements": "Polymer/core-elements",
     "paper-elements": "Polymer/paper-elements",
     "ace-element": "PolymerLabs/ace-element",
     "jquery": "~2.1.1",
     "code-mirror": "PolymerLabs/code-mirror",
-    "asq-code":"ASQ-USI/asq-code#master",
-    "asq-css-select":"ASQ-USI/asq-css-select#master",
-    "asq-element-common":"ASQ-USI/asq-element-common#master",
-    "asq-exercise":"ASQ-USI/asq-exercise#master",
-    "asq-js-function-body":"ASQ-USI/asq-js-function-body#master",
-    "asq-multi-choice":"ASQ-USI/asq-multi-choice#master",
-    "asq-option":"ASQ-USI/asq-option#master",
-    "asq-stem":"ASQ-USI/asq-stem#master",
-    "asq-text-input":"ASQ-USI/asq-text-input#master"
+    "asq-code": "ASQ-USI/asq-code#master",
+    "asq-css-select": "ASQ-USI/asq-css-select#master",
+    "asq-element-common": "ASQ-USI/asq-element-common#master",
+    "asq-exercise": "ASQ-USI/asq-exercise#master",
+    "asq-js-function-body": "ASQ-USI/asq-js-function-body#master",
+    "asq-multi-choice": "ASQ-USI/asq-multi-choice#master",
+    "asq-option": "ASQ-USI/asq-option#master",
+    "asq-stem": "ASQ-USI/asq-stem#master",
+    "asq-text-input": "ASQ-USI/asq-text-input#master"
   },
-  
   "resolutions": {
     "paper-shadow": "master",
     "paper-toast": "master",
@@ -49,6 +48,7 @@
     "core-focusable": "master",
     "core-icon": "master",
     "core-iconset-svg": "master",
-    "core-iconset": "master"
+    "core-iconset": "master",
+    "web-animations-js": "1.0.5"
   }
 }
