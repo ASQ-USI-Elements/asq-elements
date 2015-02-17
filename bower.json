@@ -28,15 +28,17 @@
     "ace-element": "PolymerLabs/ace-element",
     "jquery": "~2.1.1",
     "code-mirror": "PolymerLabs/code-mirror",
+    "asq-base": "ASQ-USI/asq-base#master",
     "asq-code": "ASQ-USI/asq-code#master",
     "asq-css-select": "ASQ-USI/asq-css-select#master",
-    "asq-element-common": "ASQ-USI/asq-element-common#master",
     "asq-exercise": "ASQ-USI/asq-exercise#master",
+    "asq-highlight": "ASQ-USI/asq-highlight#master",
     "asq-js-function-body": "ASQ-USI/asq-js-function-body#master",
     "asq-multi-choice": "ASQ-USI/asq-multi-choice#master",
     "asq-option": "ASQ-USI/asq-option#master",
     "asq-stem": "ASQ-USI/asq-stem#master",
-    "asq-text-input": "ASQ-USI/asq-text-input#master"
+    "asq-text-input": "ASQ-USI/asq-text-input#master",
+    "asq-welcome": "ASQ-USI/asq-welcome#master"
   },
   "resolutions": {
     "paper-shadow": "master",

@@ -1,10 +1,7 @@
 function init() {
-  var roleNode = document.querySelector("body").getAttributeNode("data-asq-role");
-  if ( typeof roleNode == undefined ) {
-    setRole("viewer");
-  } else {
-    setRole(roleNode.value);
-  }
+  var role = document.querySelector("body").dataset.asqRole;
+  var role = role || 'viewer' 
+  setRole(role);
 }
 
 function setRole(role) {
@@ -22,8 +19,8 @@ function getASQElements() {
   });
 
   return allAsqElements;
+} 
 
-  function isASQEl(el) {
-    return el.localName.indexOf('asq-') != -1;
-  } 
+function isASQEl(el) {
+  return (el.isASQQuestionTypeElement === true)
 } 

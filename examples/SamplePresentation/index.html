@@ -14,12 +14,12 @@
 		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/ASQBasicImpress.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script> 
     <link rel="import" href="bower_components/asq-elements/asq-elements.html">
     
   </head>
 
-  <body class="impress-not-supported">
+  <body class="impress-not-supported" data-asq-role="presenter">
 
     <div class="fallback-message">
       <p>
@@ -36,7 +36,7 @@
         <h1>This is a sample ASQ presentation</h1>
         <h3>Here goes a subheadline</h3>
         <hr />
-        <article class="asq-welcome-screen"></article>
+        <asq-welcome></asq-welcome>
       </section>
 
       <div class="step" id="slide02" data-x="1500" data-y="0" data-z="500">
@@ -91,18 +91,36 @@
       </section>
 
       <section class="step" id="slide07" data-x="9000" data-y="0" data-z="1000">
-        <asq-exercise exerciseid="ex0" class="exercise">
+        <asq-exercise exerciseid="ex5" class="exercise">
           <asq-stem><h2>Exercise 0</h2></asq-stem>
-          <asq-code mode="htmlmixed" tabSize="2" value="<polymer-element name='my-element'>
-      <template></template>  
-      <script>    
-        Polymer('my-element', {});  
-      </script>
-    </polymer-element>">
-          
-          </asq-code>
+            <asq-code mode="java" tabSize="2" fontSize="0.85em" style="height:500px">
+              <asq-stem><h4>Implement a for loop in Java</h4></asq-stem>
+              <code>public class C {      
+           public void m() {
+             int i = i + 5 + ((int)5.0) + ((int)5f);
+           }
+          }</code>
+            </asq-code>
         </asq-exercise>  
      </section>
+
+      <section class="step" id="slide08" data-x="10500" data-y="0" data-z="1000">
+        <asq-exercise exerciseid="ex6" class="exercise">
+         <asq-highlight theme="textmate" mode="java" style="height:700px">
+           <asq-solution>{"d9534f":[{"start":{"row":0,"column":0},"end":{"row":0,"column":6},"id":8},{"start":{"row":1,"column":1},"end":{"row":1,"column":7},"id":15}],"428bca":[{"start":{"row":2,"column":3},"end":{"row":2,"column":6},"id":21}],"f0ad4e":[{"start":{"row":0,"column":7},"end":{"row":0,"column":12},"id":30},{"start":{"row":1,"column":8},"end":{"row":1,"column":12},"id":37},{"start":{"row":2,"column":21},"end":{"row":2,"column":24},"id":44},{"start":{"row":2,"column":34},"end":{"row":2,"column":37},"id":50}]}
+           </asq-solution>
+           <asq-stem><h3>Highlight with the appropriate color the following:</h3></asq-stem>
+           <asq-hl-color-task color="d9534f" colorName="visibility">Visibility Modifiers</asq-hl-color-task>
+           <asq-hl-color-task color="428bca" colorName="var_declarations">Variable declarations</asq-hl-color-task>
+           <asq-hl-color-task color="f0ad4e" colorName="other">Other keywords</asq-hl-color-task>
+           <code>public class C {      
+  public void m() {
+    int i = i + 5 + ((int)5.0) + ((int)5f);
+  }
+}</code>
+         </asq-highlight>
+       </asq-exercise>
+      </section>
       
 
     </div>

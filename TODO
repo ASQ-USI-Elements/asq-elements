@@ -1,0 +1,27 @@
+PARSING
+1) we need to parse the questions and inject them to the db
+
+SUBMISSION
+1) viewer script should have an event listener for asq-exercise submit events
+    * asq-exercise will emit an event after it has gathered all the submissions from the children
+2) the viewer is going to submit this to the server
+3) The server needs to know how to store the data of a question
+
+FEEDBACK
+1) we need to show to a student if his/her submission was correct (maybe this will introduce new elements like <asq-hint></asq-hint>)
+2) stats
+
+WHAT THE ABOVE MEAN FOR THE ELEMENTS
+1) each element should have a schema definition
+2) method to store a submission to the database
+3) npm install asq-elements should install the server side code needed
+
+
+viewer.js
+//connect to the socket
+
+// have an event listener for asq-exercise
+document.addEventListener('asq-submit', function(evt, detail, sender){
+  submission = detail.submision;
+  socket.emit({submission: submission })
+});
