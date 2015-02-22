@@ -22,5 +22,5 @@ function getASQElements() {
 } 
 
 function isASQEl(el) {
-  return (el.isASQQuestionTypeElement === true)
+  return (el.isASQTypeElement === true)
 } 
