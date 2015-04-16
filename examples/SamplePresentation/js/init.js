@@ -7,7 +7,7 @@ function init() {
 function setRole(role) {
   var allAsqElements = getASQElements();
   allAsqElements.forEach(function(elem, index) {
-    elem.role = role;
+  elem.role = role;
   });
 }
 
@@ -22,5 +22,5 @@ function getASQElements() {
 } 
 
 function isASQEl(el) {
-  return (el.isASQQuestionTypeElement === true)
+  return (el.isASQElement === true)
 } 
