@@ -40,7 +40,9 @@
     "asq-solution": "ASQ-USI/asq-solution#master",
     "asq-stem": "ASQ-USI/asq-stem#master",
     "asq-text-input": "ASQ-USI/asq-text-input#master",
-    "asq-welcome": "ASQ-USI/asq-welcome#master"
+    "asq-welcome": "ASQ-USI/asq-welcome#master",
+    "asq-order": "ASQ-USI/asq-order#master",
+    "asq-bucktes": "ASQ-USI/asq-bucktes#master"
   },
   "resolutions": {
     "paper-shadow": "master",
