@@ -41,6 +41,7 @@
     "asq-stem": "ASQ-USI/asq-stem#master",
     "asq-text-input": "ASQ-USI/asq-text-input#master",
     "asq-welcome": "ASQ-USI/asq-welcome#master",
+    "asq-match": "ASQ-USI/asq-match#master",
     "asq-order": "ASQ-USI/asq-order#master",
     "asq-buckets": "ASQ-USI/asq-buckets#master"
   },
