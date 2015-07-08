@@ -1,8 +1,8 @@
 {
   "name": "asq-elements",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Customized tags for ASQ.",
-  "author": "Zhenfei Nie <zhen.fei.nie@usi.ch>, Vassilis Triglianos <triglian@gmail.com>",
+  "author": "Vassilis Triglianos <triglian@gmail.com>, Zhenfei Nie <youyis2fox@gmail.com>",
   "homepage": "https://github.com/ASQ-USI/asq-elements",
   
   "main": "index.js",
@@ -13,7 +13,7 @@
   
   "repository": {
     "type": "git",
-    "url": "git@github.com:ASQ-USI/asq-elements.git"
+    "url": "git@github.com:ASQ-USI-Elements/asq-elements.git"
   },
   
   "keywords": [
@@ -22,7 +22,7 @@
   
   
   "bugs": {
-    "url": "https://github.com/ASQ-USI/asq-elements/issues"
+    "url": "https://github.com/ASQ-USI-Elements/asq-elements/issues"
   },
 
   "dependencies": {
