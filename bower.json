@@ -22,15 +22,15 @@
   ],
   "dependencies": {
     "asq-base": "ASQ-USI-Elements/asq-base#feat-polymer-1",
-    "asq-stem": "ASQ-USI-Elements/asq-stem#feat-polymer-1",
-    "asq-option": "ASQ-USI-Elements/asq-option#feat-polymer-1",
-    "asq-multi-choice-q": "ASQ-USI-Elements/asq-multi-choice-q#feat-polymer-1",
     "asq-code-q": "ASQ-USI-Elements/asq-code-q#feat-polymer-1",
     "asq-exercise": "ASQ-USI-Elements/asq-exercise#feat-polymer-1",
+    "asq-fiddle-q": "ASQ-USI-Elements/asq-fiddle-q#master",
     "asq-highlight-q": "ASQ-USI-Elements/asq-highlight-q#feat-polymer-1",
     "asq-js-function-body-q": "ASQ-USI-Elements/asq-js-function-body-q#feat-polymer-1",
+    "asq-multi-choice-q": "ASQ-USI-Elements/asq-multi-choice-q#feat-polymer-1",
+    "asq-option": "ASQ-USI-Elements/asq-option#feat-polymer-1",
     "asq-solution": "ASQ-USI-Elements/asq-solution#feat-polymer-1",
-    
+    "asq-stem": "ASQ-USI-Elements/asq-stem#feat-polymer-1",
     "asq-text-input-q": "ASQ-USI-Elements/asq-text-input-q#feat-polymer-1",
     "asq-welcome": "ASQ-USI-Elements/asq-welcome#feat-polymer-1"
   }
