@@ -36,6 +36,7 @@
     "asq-text-input-q": "ASQ-USI-Elements/asq-text-input-q#feat-polymer-1",
     "asq-welcome": "ASQ-USI-Elements/asq-welcome#feat-polymer-1",
     "asq-matchable-behavior": "ASQ-USI-Elements/asq-matchable-behavior#feat-polymer-1",
-    "asq-buckets-q": "ASQ-USI-Elements/asq-buckets-q#feat-polymer-1"
+    "asq-buckets-q": "ASQ-USI-Elements/asq-buckets-q#feat-polymer-1",
+    "asq-order-q": "ASQ-USI-Elements/asq-order-q#feat-polymer-1"
   }
 }
