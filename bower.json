@@ -21,22 +21,22 @@
     "tests"
   ],
   "dependencies": {
-    "asq-base": "ASQ-USI-Elements/asq-base#feat-polymer-1",
-    "asq-code-q": "ASQ-USI-Elements/asq-code-q#feat-polymer-1",
-    "asq-css-select-q": "ASQ-USI-Elements/asq-css-select-q#feat-polymer-1",
-    "asq-exercise": "ASQ-USI-Elements/asq-exercise#feat-polymer-1",
+    "asq-base": "ASQ-USI-Elements/asq-base#master",
+    "asq-code-q": "ASQ-USI-Elements/asq-code-q#master",
+    "asq-css-select-q": "ASQ-USI-Elements/asq-css-select-q#master",
+    "asq-exercise": "ASQ-USI-Elements/asq-exercise#master",
     "asq-fiddle-q": "ASQ-USI-Elements/asq-fiddle-q#master",
-    "asq-highlight-q": "ASQ-USI-Elements/asq-highlight-q#feat-polymer-1",
-    "asq-js-function-body-q": "ASQ-USI-Elements/asq-js-function-body-q#feat-polymer-1",
-    "asq-css-select-q": "ASQ-USI-Elements/asq-css-select-q#feat-polymer-1",
-    "asq-multi-choice-q": "ASQ-USI-Elements/asq-multi-choice-q#feat-polymer-1",
-    "asq-option": "ASQ-USI-Elements/asq-option#feat-polymer-1",
-    "asq-solution": "ASQ-USI-Elements/asq-solution#feat-polymer-1",
-    "asq-stem": "ASQ-USI-Elements/asq-stem#feat-polymer-1",
-    "asq-text-input-q": "ASQ-USI-Elements/asq-text-input-q#feat-polymer-1",
-    "asq-welcome": "ASQ-USI-Elements/asq-welcome#feat-polymer-1",
-    "asq-matchable-behavior": "ASQ-USI-Elements/asq-matchable-behavior#feat-polymer-1",
-    "asq-buckets-q": "ASQ-USI-Elements/asq-buckets-q#feat-polymer-1",
-    "asq-order-q": "ASQ-USI-Elements/asq-order-q#feat-polymer-1"
+    "asq-highlight-q": "ASQ-USI-Elements/asq-highlight-q#master",
+    "asq-js-function-body-q": "ASQ-USI-Elements/asq-js-function-body-q#master",
+    "asq-css-select-q": "ASQ-USI-Elements/asq-css-select-q#master",
+    "asq-multi-choice-q": "ASQ-USI-Elements/asq-multi-choice-q#master",
+    "asq-option": "ASQ-USI-Elements/asq-option#master",
+    "asq-solution": "ASQ-USI-Elements/asq-solution#master",
+    "asq-stem": "ASQ-USI-Elements/asq-stem#master",
+    "asq-text-input-q": "ASQ-USI-Elements/asq-text-input-q#master",
+    "asq-welcome": "ASQ-USI-Elements/asq-welcome#master",
+    "asq-matchable-behavior": "ASQ-USI-Elements/asq-matchable-behavior#master",
+    "asq-buckets-q": "ASQ-USI-Elements/asq-buckets-q#master",
+    "asq-order-q": "ASQ-USI-Elements/asq-order-q#master"
   }
 }
