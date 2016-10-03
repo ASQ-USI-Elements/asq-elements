@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://github.com/ASQ-USI-Elements/asq-elements",
   "authors": [
+    "Vasileios Triglianos"
     "ZhenfeiNie <youyis2fox@gmail.com>"
   ],
   "description": "asq-elements",
@@ -30,6 +31,7 @@
     "asq-fiddle-q": "ASQ-USI-Elements/asq-fiddle-q#master",
     "asq-frontend-essentials": "ASQ-USI-Elements/asq-frontend-essentials#master",
     "asq-highlight-q": "ASQ-USI-Elements/asq-highlight-q#master",
+    "asq-js-eval-q": "ASQ-USI-Elements/asq-js-eval-q#master",
     "asq-js-function-body-q": "ASQ-USI-Elements/asq-js-function-body-q#master",
     "asq-matchable-behavior": "ASQ-USI-Elements/asq-matchable-behavior#master",
     "asq-multi-choice-q": "ASQ-USI-Elements/asq-multi-choice-q#master",
